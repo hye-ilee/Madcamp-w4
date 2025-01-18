@@ -37,7 +37,7 @@ import {
           <Logo onClick={() => navigate("/")}></Logo>
           <Nav>
             <NavItem onClick={() => navigate("/search")}>학과별 Lab</NavItem>
-            <NavItem onClick={() => navigate("/search")}>모집중 Lab</NavItem>
+            <NavItem onClick={() => navigate("/search/labs")}>All Lab</NavItem>
             <NavItem onClick={() => navigate("/tester")}>FAQ</NavItem>
           </Nav>
         </LogoAndNav>

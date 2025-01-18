@@ -36,7 +36,7 @@ const Search: React.FC = () => {
   >(null);
 
   const handleDepartmentClick = (dept: typeof departments[0]) => {
-    navigate(`/search/${dept.id}`);
+    navigate(`/search/labs/${dept.id}`);
   };
 
   useEffect(() => {
@@ -141,7 +141,8 @@ const DepartmentCard = styled.div<{ delay: number }>`
   animation-fill-mode: both;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) !important;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
   }
 `;
 

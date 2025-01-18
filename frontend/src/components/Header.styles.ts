@@ -25,7 +25,7 @@ export const LogoAndNav = styled.div`
 export const Logo = styled.div`
   width: 150px;
   height: 60px;
-  background-image: url('assets/logo.png');
+  background-image: url('/assets/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
