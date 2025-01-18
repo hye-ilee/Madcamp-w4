@@ -106,11 +106,12 @@ app.post('/api/register/lab', async (req, res) => {
             lab_data: labData
         });
         console.log(newLab);
-        await newLab.save();
+        // await newLab.save();
+        await mongoose.connection.db.collection('labusers').insertOne(labData);
         return res.status(201).json({ message: 'Lab registered successfully!' });
     } catch (err) {
         console.error(err);
-        return res.status(500).json({ message: 'Error registering lab' });
+        return res.status(500).json({ message: 'Error registering lab', error: err.message });
     }
 });
 
