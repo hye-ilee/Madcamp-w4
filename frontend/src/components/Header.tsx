@@ -38,7 +38,7 @@ import {
           <Nav>
             <NavItem onClick={() => navigate("/search")}>학과별 Lab</NavItem>
             <NavItem onClick={() => navigate("/search")}>모집중 Lab</NavItem>
-            <NavItem onClick={() => navigate("/faq")}>FAQ</NavItem>
+            <NavItem onClick={() => navigate("/tester")}>FAQ</NavItem>
           </Nav>
         </LogoAndNav>
         {accountType ? (

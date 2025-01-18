@@ -5,6 +5,8 @@ import Pagination from '../components/Pagination';
 import RecruitIcon from '../components/RecruitIcon';
 import StatusIcon from '../components/StatusIcon';
 import RecruitTable from '../components/RecruitTable';
+import Card from '../components/Card';
+import styled from 'styled-components';
 
 const Tester: React.FC = () => {
 
@@ -18,9 +20,9 @@ const Tester: React.FC = () => {
     };
 
     return (
-        <div>
+        <GlobalWrapper>
             <Header />
-            <br />
+            <RecruitTable />
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
@@ -28,10 +30,29 @@ const Tester: React.FC = () => {
             />
             <RecruitIcon recruit="개별연구" />
             <StatusIcon recruit="모집완료" />
-            <RecruitTable />
+            <Card
+                name="Wonder Lab"
+                lab="Interaction Design Research Lab"
+                thumbnail="https://id.kaist.ac.kr/static/media/wonderlab.8ca2a879500159552472.png"
+                email="woohun.lee@kaist.ac.kr"
+                description="We humanize technology and create delightful user experiences through interaction design."
+                keywords={["Interaction Design", "UX Design", "New Media Design"]}
+                recruitInfo={{
+                    research: 0,
+                    interns: 4,
+                    graduates: "모집 X",
+                }}
+            />
             <Footer />
-        </div>
+        </GlobalWrapper>
     );
 };
 
 export default Tester;
+
+const GlobalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.colors.gray[100]};
+`;

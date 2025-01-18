@@ -7,6 +7,8 @@ import GlobalStyle from './styles/GlobalStyle';
 import Tester from './pages/Tester';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import Home from './pages/Home';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
           <GlobalStyle />
           <Router>
             <Routes>
-              <Route path="/" element={<Tester />} />
+              <Route path="/" element={<Home />} /> 
+              <Route path="/search" element={<Search />} />
+              <Route path="/tester" element={<Tester />} />
             </Routes>
           </Router>
         </ThemeProvider>
