@@ -136,6 +136,7 @@ export const ThirdContent = styled.div`
     color: ${(props) => props.theme.colors.black};
     font-size: ${(props) => props.theme.typography.T5.fontSize};
     font-weight: ${(props) => props.theme.typography.T5.fontWeight};
+    cursor: pointer;
 `;
 
 export const FourthContent = styled.div`
