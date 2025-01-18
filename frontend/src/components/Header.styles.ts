@@ -83,6 +83,7 @@ export const AuthButton = styled.button`
     color: ${({ theme }) => theme.colors.primary};
     border-radius: 24px;
     border: 4px solid ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.white};
     cursor: pointer;
 
     &:hover {
