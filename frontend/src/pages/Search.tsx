@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const departments = [
   { id: "chem", name: "화학과", image: "bg_chem.png" },
@@ -25,47 +26,52 @@ const departments = [
 ];
 
 const Search: React.FC = () => {
+  const navigate = useNavigate();
+
   const [shuffledDepartments, setShuffledDepartments] = useState<
     typeof departments
   >([]);
-  const [selectedDepartment, setSelectedDepartment] = useState<
+  const [hoveredDepartment, setHoveredDepartment] = useState<
     typeof departments[0] | null
   >(null);
+
+  const handleDepartmentClick = (dept: typeof departments[0]) => {
+    navigate(`/search/${dept.id}`);
+  };
 
   useEffect(() => {
     // 학과 리스트 무작위로 섞기
     setShuffledDepartments(departments.sort(() => Math.random() - 0.5));
   }, []);
 
-  const handleClick = (department: typeof departments[0]) => {
-    setSelectedDepartment(department);
-  };
-
   return (
     <GlobalWrapper>
-        <Header />
-        <Container>
+      <Header />
+      <Container>
         <DepartmentGrid>
-            {shuffledDepartments.map((dept) => (
+          {shuffledDepartments.map((dept, index) => (
             <DepartmentCard
-                key={dept.id}
-                onClick={() => handleClick(dept)}
+              key={dept.id}
+              onMouseEnter={() => setHoveredDepartment(dept)} // Hover 이벤트
+              onMouseLeave={() => setHoveredDepartment(null)} // Hover 해제
+              onClick={() => handleDepartmentClick(dept)} // 클릭 이벤트
+              delay={index * 0.1} // 0.1초 간격으로 지연
             >
-                {dept.name}
+              {dept.name}
             </DepartmentCard>
-            ))}
+          ))}
         </DepartmentGrid>
         <RightPanel>
-            {selectedDepartment && (
-            <DepartmentImage
-                src={`/assets/${selectedDepartment.image}`}
-                alt={selectedDepartment.name}
-                key={selectedDepartment.id} // key를 활용해 애니메이션 적용
+          {hoveredDepartment && (
+            <HoverImage
+              src={`/assets/${hoveredDepartment.image}`}
+              alt={hoveredDepartment.name}
+              key={hoveredDepartment.id}
             />
-            )}
+          )}
         </RightPanel>
-        </Container>
-        <Footer />
+      </Container>
+      <Footer />
     </GlobalWrapper>
   );
 };
@@ -81,7 +87,20 @@ const GlobalWrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
-  background: ${({ theme }) => theme.colors.primary};
+  height: calc(100vh - 120px); /* Header/Footer 높이 감안 */
+  background-color: ${({ theme }) => theme.colors.primary};
+  overflow: hidden;
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
 const DepartmentGrid = styled.div`
@@ -92,9 +111,19 @@ const DepartmentGrid = styled.div`
   padding: 20px;
   justify-content: center;
   align-items: center;
+  overflow-y: auto; /* 세로 스크롤 가능하게 */
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.orange[300]};
+    border-radius: 10px;
+  }
 `;
 
-const DepartmentCard = styled.div`
+const DepartmentCard = styled.div<{ delay: number }>`
   padding: 20px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
@@ -106,24 +135,33 @@ const DepartmentCard = styled.div`
   cursor: pointer;
   transition: transform 0.2s ease;
 
+  /* Fade-in 애니메이션 */
+  animation: ${fadeIn} 0.5s ease-out;
+  animation-delay: ${({ delay }) => `${delay}s`};
+  animation-fill-mode: both;
+
   &:hover {
     transform: scale(1.05);
   }
 `;
 
 const RightPanel = styled.div`
-  flex: 1;
-  position: relative;
+  width: 30%;
   background: linear-gradient(90deg, #ff7b33 0%, #ffad33 100%);
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 `;
 
-const DepartmentImage = styled.img`
+const HoverImage = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
   height: 100%;
-  object-fit: contain;
+  width: 100%;
+  object-fit: cover;
   animation: slideIn 0.5s ease-out;
 
   @keyframes slideIn {
