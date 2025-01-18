@@ -93,7 +93,7 @@ try:
             time.sleep(1)  # 추가 대기 시간
 
             # 연구실 데이터 수집
-            lab_title = safe_find_element(driver, By.CSS_SELECTOR, "h3")
+            name = safe_find_element(driver, By.CSS_SELECTOR, "h3")
 
             # Thumbnail 안전하게 가져오기
             thumbnail = extract_image_from_upload_files(driver)
@@ -109,8 +109,9 @@ try:
             lab_homepage = safe_find_attribute(driver, By.XPATH, "//dt[contains(text(), '웹사이트')]/following-sibling::dd/a", "href")
 
             # 데이터 저장
-            research_data[lab_title] = {
-                "lab_title": lab_title,
+            research_data[name] = {
+                "name": name,
+                "major": "CS",
                 "thumbnail": thumbnail,
                 "description": description,
                 "LabPI": lab_pi,
@@ -118,7 +119,7 @@ try:
                 "LabKeywords": lab_keywords,
                 "LabLink": lab_homepage,
             }
-            print(f"Data extracted for: {lab_title}")
+            print(f"Data extracted for: {name}")
 
         except Exception as e:
             print(f"Error extracting data for lab at {link}: {e}")
