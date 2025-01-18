@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const PaginationButton = styled.button<{ filled: boolean }>`
+export const PaginationButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== "filled", // 'filled'를 DOM으로 전달하지 않음
+})<{ filled: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +11,7 @@ export const PaginationButton = styled.button<{ filled: boolean }>`
   border-radius: 8px;
   border: none;
   background-color: ${({ filled, theme }) =>
-    filled ? theme.colors.primary : theme.colors.white};
+    filled ? theme.colors.primary : theme.colors.orange[100]};
   color: ${({ filled, theme }) =>
     filled ? theme.colors.white : theme.colors.primary};
   cursor: pointer;
@@ -28,7 +30,7 @@ export const PaginationWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.orange[100]};
   gap: 0px;
   padding: 8px;
   border-radius: 8px;

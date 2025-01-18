@@ -124,7 +124,7 @@ const LogoWrapper = styled.div<{ delay: number }>`
 const Logo = styled.div`
   width: 500px;
   height: 200px;
-  background-image: url("assets/logo.png"); /* 로고 이미지 경로 */
+  background-image: url("/assets/logo.png"); /* 로고 이미지 경로 */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

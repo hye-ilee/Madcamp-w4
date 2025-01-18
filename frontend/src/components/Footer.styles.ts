@@ -14,7 +14,7 @@ export const FooterContainer = styled.footer`
 
 // 로고 스타일
 export const FooterLogo = styled.div`
-  background-image: url('assets/logo.png');
+  background-image: url('/assets/logo.png');
   width: 75px;
   height: 30px;
   background-size: contain;

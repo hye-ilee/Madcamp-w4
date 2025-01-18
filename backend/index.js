@@ -16,10 +16,10 @@ const port = process.env.PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(cors({ origin: "*"}));
-app.use(cors());
+app.use(cors({ origin: "*"}));
+// app.use(cors());
 
-mongoose.connect('mongodb://127.0.0.1:27017/jjolab', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected successfully!'))
   .catch((err) => console.log('MongoDB connection error:', err));
 
@@ -140,6 +140,21 @@ app.post('/api/login', async (req, res) => {
     } catch (err) {
       console.error(err);
       return res.status(500).json({ message: 'Server error' });
+    }
+});
+
+app.get('/api/labs', async (req, res) => {
+    try {
+        console.log('Fetching labs data...');
+        const labs = await mongoose.connection.db.collection('labs').find().toArray(); // 'labs'를 조회
+        if (!labs || labs.length === 0) {
+            console.warn('No labs data found in the database.');
+            return res.status(404).json({ message: 'No labs data found' });
+        }
+        return res.status(200).json(labs);
+    } catch (err) {
+        console.error('Error fetching labs data:', err.message);
+        return res.status(500).json({ message: 'Error fetching labs data' });
     }
 });
 

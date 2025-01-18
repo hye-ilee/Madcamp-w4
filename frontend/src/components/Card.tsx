@@ -26,11 +26,12 @@ import RecruitIcon from "./RecruitIcon";
 // 데이터 타입 정의
 interface CardProps {
   name: string;
-  lab: string;
+  major: string;
   thumbnail: string;
   email: string;
   description: string;
-  keywords: string[];
+  LabPI: string;
+  LabKeywords: string[];
   recruitInfo: {
     research: number;
     interns: number;
@@ -40,25 +41,26 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({
   name,
-  lab,
+  major,
   thumbnail,
   email,
   description,
-  keywords,
-  recruitInfo,
+  LabPI,
+  LabKeywords = [],
+  recruitInfo = { research: 0, interns: 0, graduates: "N/A" },
 }) => {
   return (
     <CardContainer>
       {/* 상단 정보 */}
       <TopContainer>
         <TopContent>
-          <TopName>{name}</TopName>
+          <TopName>{LabPI}</TopName>
           <TopFlagLocFrame>
             <TopFlag>🎓</TopFlag>
-            <TopLoc>ID</TopLoc>
+            <TopLoc>{major}</TopLoc>
           </TopFlagLocFrame>
         </TopContent>
-        <TopLab>{lab}</TopLab>
+        <TopLab>{name}</TopLab>
       </TopContainer>
 
       {/* 이미지 중앙 영역 */}
@@ -81,7 +83,7 @@ const Card: React.FC<CardProps> = ({
       <KeywordContainer>
         <KeywordTitle>Lab 키워드</KeywordTitle>
         <KeywordList>
-          {keywords.map((keyword, index) => (
+          {LabKeywords.map((keyword, index) => (
             <KeywordText key={index}>#{keyword}</KeywordText>
           ))}
         </KeywordList>

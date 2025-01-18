@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import SearchLabs from './pages/SearchLabs';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} /> 
               <Route path="/search" element={<Search />} />
+              <Route path="/search/labs" element={<SearchLabs />} />
               <Route path="/tester" element={<Tester />} />
             </Routes>
           </Router>
