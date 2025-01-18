@@ -58,15 +58,16 @@ try:
             driver.get(lab_link)
 
             # 데이터 크롤링
-            lab_title = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "LabTitle"))).text
+            name = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "LabTitle"))).text
             description = driver.find_element(By.CLASS_NAME, "description").text
             lab_pi = driver.find_element(By.CLASS_NAME, "LabPI").text
             email = driver.find_element(By.CLASS_NAME, "email").text
             lab_keywords = [keyword.text for keyword in driver.find_elements(By.CSS_SELECTOR, ".LabKeywords > ul > li")]
             lab_homepage = driver.find_element(By.CSS_SELECTOR, ".LabLink > a").get_attribute("href")
 
-            research_data[lab_title] = {
-                "lab_title": lab_title,
+            research_data[name] = {
+                "name": name,
+                "major": "ID",
                 "thumbnail": thumbnail,
                 "description": description,
                 "LabPI": lab_pi,
@@ -74,7 +75,7 @@ try:
                 "LabKeywords": lab_keywords,
                 "LabLink": lab_homepage
             }
-            print(f"Data extracted for: {lab_title}")
+            print(f"Data extracted for: {name}")
 
         except (StaleElementReferenceException, TimeoutException) as e:
             print(f"Error extracting data for lab: {e}")
