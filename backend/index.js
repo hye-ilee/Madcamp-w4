@@ -142,7 +142,7 @@ app.post('/api/login', async (req, res) => {
 
 app.get('/api/labs', async (req, res) => {
     try {
-        console.log('Fetching labs data...');
+        //console.log('Fetching labs data...');
         const labs = await mongoose.connection.db.collection('labs').find().toArray(); // 'labs'를 조회
         if (!labs || labs.length === 0) {
             console.warn('No labs data found in the database.');
@@ -154,6 +154,26 @@ app.get('/api/labs', async (req, res) => {
         return res.status(500).json({ message: 'Error fetching labs data' });
     }
 });
+
+app.get('/api/labs/:LabName', async (req, res) => {
+    const { LabName } = req.params; // URL에서 LabName 추출
+
+    try {
+        const lab = await mongoose.connection.db
+            .collection('labs') // 'labs' 컬렉션 조회
+            .findOne({ name: LabName }); // LabName에 해당하는 연구실 찾기
+
+        if (!lab) {
+            return res.status(404).json({ message: `Lab with name "${LabName}" not found` });
+        }
+
+        return res.status(200).json(lab); // 성공적으로 데이터 반환
+    } catch (err) {
+        console.error('Error fetching lab data:', err.message);
+        return res.status(500).json({ message: 'Error fetching lab data' });
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

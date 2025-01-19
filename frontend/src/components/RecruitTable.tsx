@@ -33,6 +33,10 @@ const recruitData: RecruitData[] = [
   { id: 22, status: "지원마감", title: "NH투자증권 X Next Interface Lab 단기 디자이너 인턴 구인", recruitCount: "4인", deadline: "2025.01.01" },
   { id: 21, status: "지원마감", title: "NH투자증권 X Next Interface Lab 단기 디자이너 인턴 구인", recruitCount: "4인", deadline: "2025.01.01" },
   { id: 20, status: "모집완료", title: "NH투자증권 X Next Interface Lab 단기 디자이너 인턴 구인", recruitCount: "4인", deadline: "2024.12.18" },
+  { id: 19, status: "모집완료", title: "NH투자증권 X Next Interface Lab 단기 디자이너 인턴 구인", recruitCount: "4인", deadline: "2024.12.18" },
+  { id: 18, status: "모집완료", title: "NH투자증권 X Next Interface Lab 단기 디자이너 인턴 구인", recruitCount: "4인", deadline: "2024.12.18" },
+  { id: 17, status: "모집완료", title: "NH투자증권 X Next Interface Lab 단기 디자이너 인턴 구인", recruitCount: "4인", deadline: "2024.12.18" },
+  { id: 16, status: "모집완료", title: "NH투자증권 X Next Interface Lab 단기 디자이너 인턴 구인", recruitCount: "4인", deadline: "2024.12.18" },
 ];
 
 // RecruitTable 컴포넌트

@@ -10,6 +10,7 @@ import store from './redux/store';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import SearchLabs from './pages/SearchLabs';
+import LabInfo from './pages/LabInfo';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/" element={<Home />} /> 
               <Route path="/search" element={<Search />} />
               <Route path="/search/labs" element={<SearchLabs />} />
+              <Route path="/search/labs/:LabName" element={<LabInfo />} />
               <Route path="/tester" element={<Tester />} />
             </Routes>
           </Router>
