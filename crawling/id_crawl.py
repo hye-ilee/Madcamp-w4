@@ -17,6 +17,31 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
+# 언어를 한글로 변경
+def switch_language_to_korean(driver):
+    try:
+        print("Switching language to Korean...")
+        # HeaderRight의 svg 클릭
+        WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".HeaderRight svg"))
+        ).click()
+
+        # LanguageSelector에서 "한글" 클릭
+        WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".LanguageSelector .active"))
+        ).click()
+        
+        print("Language switched to Korean.")
+
+        # menuclosebutton 클릭
+        WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "MenuCloseButton"))
+        ).click()
+        print("Menu closed successfully.")
+
+    except Exception as e:
+        print(f"Error while switching language or closing menu: {e}")
+
 try:
     # 페이지 로드
     main_url = "https://id.kaist.ac.kr/research"
@@ -29,9 +54,6 @@ try:
         lambda d: d.execute_script("return document.readyState") == "complete"
     )
     print("Page loaded successfully!")
-
-    # 추가 대기 시간 (필요할 경우)
-    time.sleep(5)
 
     # 연구실 링크 목록 저장
     print("Extracting research items...")
@@ -49,13 +71,14 @@ try:
             print(f"Error extracting lab link: {e}")
             continue
 
-    research_data = {}
+    research_data = []
     for lab in lab_links:
         lab_link = lab["link"]
         thumbnail = lab["thumbnail"]
         try:
             print(f"Processing lab: {lab_link}")
             driver.get(lab_link)
+            switch_language_to_korean(driver)
 
             # 데이터 크롤링
             name = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "LabTitle"))).text
@@ -65,7 +88,7 @@ try:
             lab_keywords = [keyword.text for keyword in driver.find_elements(By.CSS_SELECTOR, ".LabKeywords > ul > li")]
             lab_homepage = driver.find_element(By.CSS_SELECTOR, ".LabLink > a").get_attribute("href")
 
-            research_data[name] = {
+            research_data_lab = {
                 "name": name,
                 "major": "ID",
                 "thumbnail": thumbnail,
@@ -75,6 +98,7 @@ try:
                 "LabKeywords": lab_keywords,
                 "LabLink": lab_homepage
             }
+            research_data.append(research_data_lab)
             print(f"Data extracted for: {name}")
 
         except (StaleElementReferenceException, TimeoutException) as e:

@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { FaChevronDown, FaChevronUp, FaSearch } from "react-icons/fa";
 
 const departments = [
-  { label: "전산학부", value: "CS" },
-  { label: "산업디자인학과", value: "ID" },
-  { label: "전기 및 전자공학부", value: "EE" },
-  { label: "화학과", value: "CHEM" },
-  { label: "생명과학과", value: "BIO" },
-  { label: "수리과학과", value: "MATH" },
-  { label: "기계공학과", value: "ME" },
+  { label: "CS", value: "CS" },
+  { label: "ID", value: "ID" },
+  { label: "EE", value: "EE" },
+  { label: "CHEM", value: "CHEM" },
+  { label: "BIO", value: "BIO" },
+  { label: "MATH", value: "MATH" },
+  { label: "ME", value: "ME" },
 ];
 
 const recruitmentTypes = ["개별 연구", "랩 인턴", "졸업 연구"];

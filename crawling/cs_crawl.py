@@ -78,7 +78,7 @@ try:
     lab_links = [element.get_attribute("href") for element in lab_elements]
     print(f"Collected {len(lab_links)} lab links.")
 
-    research_data = {}
+    research_data = []
 
     for link in lab_links:
         try:
@@ -109,7 +109,7 @@ try:
             lab_homepage = safe_find_attribute(driver, By.XPATH, "//dt[contains(text(), '웹사이트')]/following-sibling::dd/a", "href")
 
             # 데이터 저장
-            research_data[name] = {
+            research_data_lab = {
                 "name": name,
                 "major": "CS",
                 "thumbnail": thumbnail,
@@ -119,6 +119,7 @@ try:
                 "LabKeywords": lab_keywords,
                 "LabLink": lab_homepage,
             }
+            research_data.append(research_data_lab)
             print(f"Data extracted for: {name}")
 
         except Exception as e:

@@ -42,7 +42,7 @@ const SearchLabs: React.FC = () => {
 
   useEffect(() => {
     let updatedData = labsData;
-
+  
     // 이름 또는 LabPI 검색
     if (searchQuery) {
       updatedData = updatedData.filter(
@@ -51,16 +51,14 @@ const SearchLabs: React.FC = () => {
           lab.LabPI.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-
+  
     // 학과 필터링
     if (selectedDepartments.length > 0) {
       updatedData = updatedData.filter((lab) =>
-        selectedDepartments.includes(
-          lab.major === "CS" ? "전산학부" : "산업디자인학과"
-        )
+        selectedDepartments.includes(lab.major)
       );
     }
-
+  
     // 모집 여부 필터링
     if (selectedRecruitment.length > 0) {
       updatedData = updatedData.filter((lab) =>
@@ -69,7 +67,8 @@ const SearchLabs: React.FC = () => {
         )
       );
     }
-
+  
+    // 필터링된 데이터 저장
     setFilteredData(updatedData);
     setCurrentPage(1);
   }, [searchQuery, selectedDepartments, selectedRecruitment, labsData]);
@@ -107,7 +106,7 @@ const SearchLabs: React.FC = () => {
         <SearchTabWrapper>
           <SearchTab
             showDepartments={true}
-            showRecruitment={true}
+            showRecruitment={false}
             onSearch={handleSearch}
             onFilterChange={handleFilterChange}
           />
