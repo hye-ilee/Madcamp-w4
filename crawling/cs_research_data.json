@@ -1,5 +1,5 @@
-{
-    "네트워크 보안 및 프라이버시 연구실": {
+[
+    {
         "name": "네트워크 보안 및 프라이버시 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/5f44a51390fdf_thumb.jpg",
@@ -12,7 +12,7 @@
         ],
         "LabLink": "https://netsp.kaist.ac.kr/"
     },
-    "사이버 보안 시스템 연구실": {
+    {
         "name": "사이버 보안 시스템 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/20495e8109f4d8bbb5b7544ba4f79d2c.png",
@@ -26,7 +26,7 @@
         ],
         "LabLink": "https://cysec.kr/"
     },
-    "소프트웨어 아키텍처 연구실": {
+    {
         "name": "소프트웨어 아키텍처 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/53f41f2dae3ba.png",
@@ -39,7 +39,7 @@
         ],
         "LabLink": "http://salab.kaist.ac.kr/"
     },
-    "동시성 및 병렬성 연구실": {
+    {
         "name": "동시성 및 병렬성 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/5da3c49f996ca_thumb.png",
@@ -52,7 +52,7 @@
         ],
         "LabLink": "https://cp.kaist.ac.kr/"
     },
-    "웹 공학 및 서비스 컴퓨팅 연구실": {
+    {
         "name": "웹 공학 및 서비스 컴퓨팅 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/617252fd3ea24_thumb.jpg",
@@ -65,7 +65,7 @@
         ],
         "LabLink": "https://webeng.kaist.ac.kr/"
     },
-    "컴퓨터구조 및 시스템 연구실": {
+    {
         "name": "컴퓨터구조 및 시스템 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/6285d96f80acd_thumb.png",
@@ -81,7 +81,7 @@
         ],
         "LabLink": "http://casys.kaist.ac.kr/"
     },
-    "데이터 공학 및 분석 연구실": {
+    {
         "name": "데이터 공학 및 분석 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/412f95e78b3ec4ef73cefeb2b2c9731e.png",
@@ -93,7 +93,7 @@
         ],
         "LabLink": "https://www.deal.kaist.ac.kr/"
     },
-    "데이터베이스 연구실": {
+    {
         "name": "데이터베이스 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/31e58a9f84dd55a946ee96036d76be9a.jpg",
@@ -107,7 +107,7 @@
         ],
         "LabLink": "http://dbserver.kaist.ac.kr/"
     },
-    "소프트웨어 테스팅 및 검증 연구실": {
+    {
         "name": "소프트웨어 테스팅 및 검증 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/62abe0b4d52f2_thumb.png",
@@ -120,7 +120,7 @@
         ],
         "LabLink": "https://swtv.kaist.ac.kr/"
     },
-    "인포랩": {
+    {
         "name": "인포랩",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/5e5f4d1a71638_thumb.png",
@@ -134,7 +134,7 @@
         ],
         "LabLink": "http://infolab.kaist.ac.kr/"
     },
-    "비주얼 컴퓨팅 연구실": {
+    {
         "name": "비주얼 컴퓨팅 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/e2e9a89cd36c6042382154c9d85b1d40.jpg",
@@ -147,7 +147,7 @@
         ],
         "LabLink": "http://vclab.kaist.ac.kr/"
     },
-    "임베디드 컴퓨팅 연구실": {
+    {
         "name": "임베디드 컴퓨팅 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/0bf71afec954fe98b0472635b10796b2.png",
@@ -159,7 +159,7 @@
         ],
         "LabLink": "http://ecl.kaist.ac.kr/"
     },
-    "인터랙션 연구실": {
+    {
         "name": "인터랙션 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/83fc9a713292753afeee244aaea0d8f6.jpg",
@@ -173,7 +173,7 @@
         ],
         "LabLink": "https://kixlab.org/"
     },
-    "컴퓨터 비전 및 머신 러닝 랩": {
+    {
         "name": "컴퓨터 비전 및 머신 러닝 랩",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/628adde500cbe_thumb.png",
@@ -186,7 +186,7 @@
         ],
         "LabLink": "https://sites.google.com/view/tkkim/"
     },
-    "프로그래밍 언어 연구 그룹": {
+    {
         "name": "프로그래밍 언어 연구 그룹",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/6164d1cbadd00_thumb.jpg",
@@ -199,7 +199,7 @@
         ],
         "LabLink": "http://plrg.kaist.ac.kr/"
     },
-    "첨단 네트워킹 연구실": {
+    {
         "name": "첨단 네트워킹 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/7a9f1cf0c32b9aae0c3b07564d74be82.jpg",
@@ -212,7 +212,7 @@
         ],
         "LabLink": "http://an.kaist.ac.kr/"
     },
-    "빅데이터 분석 및 학습 연구실": {
+    {
         "name": "빅데이터 분석 및 학습 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/65bc3e9b6b45f_thumb.jpg",
@@ -225,7 +225,7 @@
         ],
         "LabLink": "https://sites.google.com/view/npark"
     },
-    "강인 지능 및 로보틱스 연구실": {
+    {
         "name": "강인 지능 및 로보틱스 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/5f44a3563e531_thumb.jpg",
@@ -238,7 +238,7 @@
         ],
         "LabLink": "https://rirolab.kaist.ac.kr/"
     },
-    "자연언어처리 및 계산언어학 연구실": {
+    {
         "name": "자연언어처리 및 계산언어학 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/e17d1b2aaeb593498edfd4e1eea8071f.png",
@@ -252,7 +252,7 @@
         ],
         "LabLink": "http://nlpcl.kaist.ac.kr/"
     },
-    "컴퓨터 그래픽스 및 가시화 연구실": {
+    {
         "name": "컴퓨터 그래픽스 및 가시화 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/61cd476c22606_thumb.jpg",
@@ -265,7 +265,7 @@
         ],
         "LabLink": "http://cgv.kaist.ac.kr/"
     },
-    "소프트웨어 프로세스 개선 및 신뢰성 검증 연구실": {
+    {
         "name": "소프트웨어 프로세스 개선 및 신뢰성 검증 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/96f49f9f8b05ccd76f6f1d052e077aee.jpg",
@@ -278,7 +278,7 @@
         ],
         "LabLink": "http://spiral.kaist.ac.kr/"
     },
-    "KAIST Visual AI Group": {
+    {
         "name": "KAIST Visual AI Group",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/6054558cc8b29_thumb.png",
@@ -291,7 +291,7 @@
         ],
         "LabLink": "https://visualai.kaist.ac.kr/"
     },
-    "웹 보안 및 개인정보 보호 연구실": {
+    {
         "name": "웹 보안 및 개인정보 보호 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/14b823e624b54d6d93270dd3df4f8c9a.jpg",
@@ -303,7 +303,7 @@
         ],
         "LabLink": "https://wsp-lab.github.io/"
     },
-    "NC 연구실": {
+    {
         "name": "NC 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/5cdb7ee78accc_thumb.jpg",
@@ -319,7 +319,7 @@
         ],
         "LabLink": "http://nclab.kaist.ac.kr/"
     },
-    "사이버 물리 시스템 연구실": {
+    {
         "name": "사이버 물리 시스템 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/53f439bbb9564.png",
@@ -332,7 +332,7 @@
         ],
         "LabLink": "http://cps.kaist.ac.kr/"
     },
-    "머신러닝 & 마인드 랩": {
+    {
         "name": "머신러닝 & 마인드 랩",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/641cf3c332696_thumb.jpg",
@@ -346,7 +346,7 @@
         ],
         "LabLink": "https://mlml.kaist.ac.kr/"
     },
-    "프로그래밍 언어 및 기계학습 원리 연구실": {
+    {
         "name": "프로그래밍 언어 및 기계학습 원리 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/6c2d59dd03a189897fc5e73c1922a91e.jpg",
@@ -359,7 +359,7 @@
         ],
         "LabLink": "https://sites.google.com/view/hongseokyang/home"
     },
-    "Users and Information Lab": {
+    {
         "name": "Users and Information Lab",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/485835e51602cfb778d4ebbf4a3b8054.jpg",
@@ -373,7 +373,7 @@
         ],
         "LabLink": "https://uilab.kr/"
     },
-    "계산지능형 소프트웨어 공학 연구실": {
+    {
         "name": "계산지능형 소프트웨어 공학 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/6167964bc6563_thumb.jpg",
@@ -386,7 +386,7 @@
         ],
         "LabLink": "https://coinse.github.io/"
     },
-    "컴퓨터 그래픽스, 컴퓨터 비젼, 로보틱스": {
+    {
         "name": "컴퓨터 그래픽스, 컴퓨터 비젼, 로보틱스",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/895ea5281bee56e5edebe2eda561e343.jpg",
@@ -400,7 +400,7 @@
         ],
         "LabLink": "http://sglab.kaist.ac.kr/"
     },
-    "인간 컴퓨터 상호 작용 연구실": {
+    {
         "name": "인간 컴퓨터 상호 작용 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/f1c92f874578fcff891a8616fda309f4.jpg",
@@ -412,7 +412,7 @@
         ],
         "LabLink": "http://hcil.kaist.ac.kr/"
     },
-    "협동 분산 시스템 및 네트워크 연구실": {
+    {
         "name": "협동 분산 시스템 및 네트워크 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/7dbaab31ffbc4bb257575362f6dccac4.jpg",
@@ -426,7 +426,7 @@
         ],
         "LabLink": "http://cds.kaist.ac.kr/cdsn/"
     },
-    "인터랙티브 컴퓨팅 연구실": {
+    {
         "name": "인터랙티브 컴퓨팅 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/62a93a76477f5_thumb.png",
@@ -439,7 +439,7 @@
         ],
         "LabLink": "http://ic.kaist.ac.kr/"
     },
-    "데이터 마이닝 연구실": {
+    {
         "name": "데이터 마이닝 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/5f8d687da9a84_thumb.jpg",
@@ -451,7 +451,7 @@
         ],
         "LabLink": "https://dm.kaist.ac.kr/"
     },
-    "암호론 연구실": {
+    {
         "name": "암호론 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/cb83f08000ba71eac6c129dd655231ff.jpg",
@@ -464,7 +464,7 @@
         ],
         "LabLink": "https://sites.google.com/view/cryptlab/home"
     },
-    "뉴로-기계 증강지능 연구실": {
+    {
         "name": "뉴로-기계 증강지능 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/016ee1e7582d41a62c6d03dce0abbd4c.png",
@@ -479,7 +479,7 @@
         ],
         "LabLink": "http://nmail.kaist.ac.kr/"
     },
-    "복잡도 및 실수 연산 연구실": {
+    {
         "name": "복잡도 및 실수 연산 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/55efc14e71a3f_thumb.gif",
@@ -491,7 +491,7 @@
         ],
         "LabLink": "http://kaist.theoryofcomputation.asia/"
     },
-    "데이터 사이언스 연구실": {
+    {
         "name": "데이터 사이언스 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/6c3032783c66ad6c4165c907319d956c.png",
@@ -505,7 +505,7 @@
         ],
         "LabLink": "http://ds.kaist.ac.kr/"
     },
-    "소프트웨어 보안 연구실": {
+    {
         "name": "소프트웨어 보안 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/d8e1e95b230691a91e892f105f4e9957.png",
@@ -519,7 +519,7 @@
         ],
         "LabLink": "http://softsec.kaist.ac.kr/"
     },
-    "기하 컴퓨팅 연구실": {
+    {
         "name": "기하 컴퓨팅 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/53fc8f593eb1e_thumb.jpg",
@@ -533,7 +533,7 @@
         ],
         "LabLink": "http://gclab.kaist.ac.kr/"
     },
-    "지식공학 및 인공지능 연구실": {
+    {
         "name": "지식공학 및 인공지능 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/cb8dd60fd1003254b8c5d3f89c564870.jpg",
@@ -547,7 +547,7 @@
         ],
         "LabLink": "https://keai.kaist.ac.kr/"
     },
-    "지능형 서비스 통합 연구실": {
+    {
         "name": "지능형 서비스 통합 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/2ac0ef4459f6c429dbdf6eb68e4459b5.jpg",
@@ -559,7 +559,7 @@
         ],
         "LabLink": "https://sites.google.com/view/isilab"
     },
-    "사이버-물리 시스템 및 보안 연구실(CyPhy 랩)": {
+    {
         "name": "사이버-물리 시스템 및 보안 연구실(CyPhy 랩)",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/65cdd0d166bc4_thumb.png",
@@ -573,7 +573,7 @@
         ],
         "LabLink": "https://www.cyphy.kaist.ac.kr/"
     },
-    "프로그래밍 시스템 연구실": {
+    {
         "name": "프로그래밍 시스템 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/624a47cbafb5c_thumb.jpg",
@@ -587,7 +587,7 @@
         ],
         "LabLink": "https://prosys.kaist.ac.kr/"
     },
-    "비전 및 학습 연구실": {
+    {
         "name": "비전 및 학습 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/61d3ffbe9c774_thumb.png",
@@ -600,7 +600,7 @@
         ],
         "LabLink": "https://vllab.kaist.ac.kr/"
     },
-    "빅데이터 지능 연구실": {
+    {
         "name": "빅데이터 지능 연구실",
         "major": "CS",
         "thumbnail": "https://cs.kaist.ac.kr/upload_files/research_lab/624f75eecbfe3_thumb.png",
@@ -613,4 +613,4 @@
         ],
         "LabLink": "http://bdi-lab.kaist.ac.kr/"
     }
-}
+]
