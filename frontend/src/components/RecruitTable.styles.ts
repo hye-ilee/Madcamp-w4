@@ -133,7 +133,7 @@ export const ThirdContent = styled.div`
     align-items: center;
     flex: 1 0 0;
     text-align: center;
-    color: ${(props) => props.theme.colors.black};
+    color: ${(props) => props.theme.colors.blue[600]};
     font-size: ${(props) => props.theme.typography.T5.fontSize};
     font-weight: ${(props) => props.theme.typography.T5.fontWeight};
     cursor: pointer;

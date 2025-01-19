@@ -4,7 +4,6 @@ import Footer from '../components/Footer';
 import Pagination from '../components/Pagination';
 import RecruitIcon from '../components/RecruitIcon';
 import StatusIcon from '../components/StatusIcon';
-import RecruitTable from '../components/RecruitTable';
 import styled from 'styled-components';
 
 const Tester: React.FC = () => {
@@ -21,7 +20,6 @@ const Tester: React.FC = () => {
     return (
         <GlobalWrapper>
             <Header />
-            <RecruitTable />
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}

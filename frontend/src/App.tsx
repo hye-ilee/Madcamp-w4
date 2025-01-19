@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Search from './pages/Search';
 import SearchLabs from './pages/SearchLabs';
 import LabInfo from './pages/LabInfo';
+import LabBoard from './pages/LabBoard';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/search/labs" element={<SearchLabs />} />
               <Route path="/search/labs/:LabName" element={<LabInfo />} />
+              <Route path="/search/labs/:LabName/:Index" element={<LabBoard />} />
               <Route path="/tester" element={<Tester />} />
             </Routes>
           </Router>
