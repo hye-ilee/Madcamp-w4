@@ -81,8 +81,8 @@ export default Search;
 const GlobalWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.colors.gray[100]};
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.colors.orange[100]};
 `;
 
 const Container = styled.div`

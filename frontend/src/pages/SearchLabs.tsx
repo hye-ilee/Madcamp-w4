@@ -99,7 +99,7 @@ const SearchLabs: React.FC = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <PageWrapper>
+    <GlobalWrapper>
       <Header />
       <MainContainer>
         <Title>LAB 둘러보기</Title>
@@ -113,7 +113,7 @@ const SearchLabs: React.FC = () => {
         </SearchTabWrapper>
         <CardGrid>
           {currentData.length > 0 ? (
-            currentData.map((data, index) => <Card key={index} {...data} />)
+            currentData.map((data, index) => <Card key={index} {...data}/>)
           ) : (
             <div>No data found.</div>
           )}
@@ -127,29 +127,34 @@ const SearchLabs: React.FC = () => {
         </PaginationWrapper>
       </MainContainer>
       <Footer />
-    </PageWrapper>
+    </GlobalWrapper>
   );
 };
 
 export default SearchLabs;
 
-const PageWrapper = styled.div`
+const GlobalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: ${({ theme }) => theme.colors.orange[100]};
+  gap: 64px;
 `;
 
 const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 40px 20px;
+  gap: 32px;
+  align-self: stretch;
   flex: 1;
 `;
 
 const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
   font-size: ${({ theme }) => theme.typography.T1.fontSize};
   font-weight: ${({ theme }) => theme.typography.T1.fontWeight};
   color: ${({ theme }) => theme.colors.primary};
@@ -162,6 +167,7 @@ const SearchTabWrapper = styled.div`
 
 const CardGrid = styled.div`
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 20px;
   width: 100%;

@@ -5,7 +5,7 @@ export const RecruitTableContainer = styled.div`
     flex-direction: column;
     gap: 0px;
     align-items: flex-start;
-    width: 50%;
+    width: 100%;
 `;
 
 export const RecruitTitleContainer = styled.div`
@@ -94,9 +94,9 @@ export const RecruitContentContainer = styled.div`
     display: flex;
     width: 100%;
     align-items: center;
-    border-right: 1px solid ${(props) => props.theme.colors.gray[100]};
-    border-bottom: 1px solid ${(props) => props.theme.colors.gray[100]};
-    border-left: 1px solid ${(props) => props.theme.colors.gray[100]};
+    border-right: 1px solid ${(props) => props.theme.colors.orange[300]};
+    border-bottom: 1px solid ${(props) => props.theme.colors.orange[300]};
+    border-left: 1px solid ${(props) => props.theme.colors.orange[300]};
     background: ${(props) => props.theme.colors.white};
 `;
 
