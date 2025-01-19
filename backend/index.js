@@ -8,6 +8,8 @@ const jwt = require('jsonwebtoken');
 const User = require('./models/user');
 const Student = require('./models/student');
 const Lab = require('./models/lab');
+const { Notice } = require('./models/notice');
+const { Comment } = require('./models/notice');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -174,7 +176,86 @@ app.get('/api/labs/:LabName', async (req, res) => {
     }
 });
 
+// 특정 LabName의 모든 Notice 가져오기
+app.get('/api/notices/:LabName', async (req, res) => {
+    const { LabName } = req.params; // URL에서 LabName 추출
 
+    try {
+        // notices 컬렉션에서 특정 LabName과 일치하는 공지사항 모두 찾기
+        const notices = await Notice.find({ name: LabName });
+
+        return res.status(200).json(notices); // 성공적으로 데이터 반환
+    } catch (err) {
+        console.error('Error fetching notices data:', err.message);
+        return res.status(500).json({ message: 'Error fetching notices data' });
+    }
+});
+
+
+// 특정 Notice 가져오기
+app.get("/api/notices/:LabName/:Index", async (req, res) => {
+  const { LabName, Index } = req.params;
+
+  try {
+    const notice = await Notice.findOne({ name: LabName, index: Number(Index) })
+      .populate({
+        path: "comments.replies",
+        populate: { path: "replies" }, // Nested population for replies
+      })
+      .exec();
+
+    if (!notice) {
+      return res.status(404).json({ message: "Notice not found." });
+    }
+
+    res.status(200).json(notice);
+  } catch (err) {
+    console.error("Error fetching notice:", err.message);
+    res.status(500).json({ message: "Failed to fetch notice." });
+  }
+});
+
+
+  
+// 댓글 추가 API
+app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
+    const { LabName, Index } = req.params;
+    const { userId, name, content, parentCommentId } = req.body;
+  
+    try {
+      const notice = await Notice.findOne({ name: LabName, index: Index });
+      if (!notice) {
+        return res.status(404).json({ message: "Notice not found." });
+      }
+  
+      const newComment = {
+        userId,
+        name,
+        content,
+        timestamp: new Date(),
+        isReply: !!parentCommentId,
+        parentCommentId: parentCommentId || null,
+        replies: []
+      };
+  
+      if (parentCommentId) {
+        const parentComment = notice.comments.id(parentCommentId);
+        if (!parentComment) {
+          return res.status(404).json({ message: "Parent comment not found." });
+        }
+        parentComment.replies.push(newComment);
+      } else {
+        notice.comments.push(newComment);
+      }
+  
+      await notice.save();
+      res.status(201).json({ message: "Comment added successfully." });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Failed to add comment." });
+    }
+  });
+  
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
