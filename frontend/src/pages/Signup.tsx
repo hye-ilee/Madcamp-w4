@@ -10,7 +10,8 @@ const Signup: React.FC = () => {
 
   // Form data 상태 관리
   const [formData, setFormData] = useState({
-    userId: "",
+    email: "",
+    password: "",
     name: "",
     studentid: "",
     major: "",
@@ -33,7 +34,7 @@ const Signup: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    const requiredFields = ["userId", "name", "studentid", "major", "resume", "interests"];
+    const requiredFields = ["email", "password", "name", "studentid", "major", "resume", "interests"];
     const missingFields = requiredFields.filter(
       (field) => !formData[field as keyof typeof formData] || (Array.isArray(formData[field as keyof typeof formData]) && formData[field as keyof typeof formData].length === 0)
     );
@@ -44,7 +45,7 @@ const Signup: React.FC = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/register/student", formData);
+      const response = await axios.post("http://localhost:5000/api/register", formData);
       console.log("Student registered successfully:", response.data);
       alert("회원가입이 완료되었습니다.");
       navigate("/");
@@ -60,16 +61,30 @@ const Signup: React.FC = () => {
       <Wrapper>
         <Title>학생 회원가입</Title>
 
-        {/* User ID */}
+        {/* Email */}
         <Content>
-          <ContentName>유저 ID</ContentName>
+          <ContentName>Email</ContentName>
           <ContentInput>
             <input
-              type="text"
-              name="userId"
-              value={formData.userId}
+              type="email"
+              name="email"
+              value={formData.email}
               onChange={handleInputChange}
-              placeholder="유저 ID를 입력해주세요"
+              placeholder="Email을 입력해주세요"
+            />
+          </ContentInput>
+        </Content>
+
+        {/* Password */}
+        <Content>
+          <ContentName>비밀번호</ContentName>
+          <ContentInput>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="비밀번호를 입력해주세요"
             />
           </ContentInput>
         </Content>
