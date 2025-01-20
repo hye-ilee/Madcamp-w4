@@ -4,9 +4,12 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setStudentData } from "../redux/slices/userSlice";
 
 const Login: React.FC = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [userInput, setuserInput] = useState({
         email: "",
         password: "",
@@ -31,7 +34,8 @@ const Login: React.FC = () => {
         try {
           const response = await axios.post("http://localhost:5000/api/login", userInput);
           console.log("Student registered successfully:", response.data);
-          alert("로그인되었습니다.");
+          dispatch(setStudentData(response.data.user));
+          alert(`${response.data.user.name}님 로그인되었습니다.`);
           navigate("/");
         } catch (error: any) {
           console.error("Error registering student:", error);
@@ -74,10 +78,13 @@ const Login: React.FC = () => {
             </Content>
 
             {/* Login Button */}
-            <ButtonContainer>
-                <Button1 onClick={() => navigate(-1)}>이전</Button1>
-                <Button2 onClick={handleLogin}>로그인</Button2>
-            </ButtonContainer>
+            <ButtonLabContainer>
+                <ButtonContainer>
+                    <Button1 onClick={() => navigate(-1)}>이전</Button1>
+                    <Button2 onClick={handleLogin}>로그인</Button2>
+                </ButtonContainer>
+                <ButtonLab onClick={() => navigate("/")}>Lab으로 로그인하기</ButtonLab>
+            </ButtonLabContainer>
         </Wrapper>
         <Footer />
     </GlobalWrapper>
@@ -186,6 +193,26 @@ const Button2 = styled.div`
     height: 40px;
     border-radius: 8px;
     background: ${({ theme }) => theme.colors.primary};
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+`;
+
+const ButtonLabContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+const ButtonLab = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${({ theme }) => theme.colors.white};
+    width: 232px;
+    height: 40px;
+    border-radius: 8px;
+    background: ${({ theme }) => theme.colors.blue[600]};
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
