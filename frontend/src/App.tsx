@@ -4,7 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { theme } from './styles/theme';
 import GlobalStyle from './styles/GlobalStyle';
-import Tester from './pages/Tester';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Home from './pages/Home';
@@ -15,6 +14,7 @@ import LabBoard from './pages/LabBoard';
 import DeptSearch from './pages/DeptSearch';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Recruiting from './pages/Recruiting';
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
               <Route path="/search/labs" element={<SearchLabs />} />
               <Route path="/search/labs/:LabName" element={<LabInfo />} />
               <Route path="/search/labs/:LabName/:Index" element={<LabBoard />} />
-              <Route path="/tester" element={<Tester />} />
+              <Route path="/recruiting" element={<Recruiting />} />
             </Routes>
           </Router>
         </ThemeProvider>

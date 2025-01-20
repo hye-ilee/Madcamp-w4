@@ -12,8 +12,11 @@ import {
     AuthButton,
     UserSection,
     UserName,
+    StyledImage,
   } from "./Header.styles";
   import { useNavigate } from "react-router-dom";
+
+  const labTextSrc = `/assets/lab_text.png`;
 
   const Header: React.FC = () => {
     const navigate = useNavigate();
@@ -36,9 +39,15 @@ import {
         <LogoAndNav>
           <Logo onClick={() => navigate("/")}></Logo>
           <Nav>
-            <NavItem onClick={() => navigate("/search")}>학과별 Lab</NavItem>
-            <NavItem onClick={() => navigate("/search/labs")}>All Lab</NavItem>
-            <NavItem onClick={() => navigate("/tester")}>FAQ</NavItem>
+            <NavItem onClick={() => navigate("/search")}>
+              학과별 <StyledImage src={labTextSrc} alt="Lab Text" />
+            </NavItem>
+            <NavItem onClick={() => navigate("/recruiting")}>
+              모집중 <StyledImage src={labTextSrc} alt="Lab Text" />
+            </NavItem>
+            <NavItem onClick={() => navigate("/search/labs")}>
+              <StyledImage src={labTextSrc} alt="Lab Text" /> 둘러보기
+            </NavItem>
           </Nav>
         </LogoAndNav>
         {accountType ? (
@@ -57,5 +66,3 @@ import {
 }
 
 export default Header;
-
-        

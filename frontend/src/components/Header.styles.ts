@@ -41,6 +41,10 @@ export const Nav = styled.nav`
 
 // 네비게이션 아이템
 export const NavItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
   font-size: ${({ theme }) => theme.typography.T3.fontSize};
   font-weight: ${({ theme }) => theme.typography.T3.fontWeight};
   color: ${({ theme }) => theme.colors.black};
@@ -90,4 +94,9 @@ export const AuthButton = styled.button`
         background-color: ${({ theme }) => theme.colors.primary};
         color: ${({ theme }) => theme.colors.white};
     }
+`;
+
+export const StyledImage = styled.img`
+  height: 24px; /* 부모 높이에 맞춤 */
+  width: auto; /* 비율 유지 */
 `;
