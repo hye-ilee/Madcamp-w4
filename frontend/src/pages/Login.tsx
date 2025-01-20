@@ -43,41 +43,41 @@ const Login: React.FC = () => {
     <GlobalWrapper>
         <Header />
         <Wrapper>
-        <Title>학생 로그인</Title>
+            <Title>로그인</Title>
 
-        {/* Email */}
-        <Content>
-            <ContentName>Email</ContentName>
-            <ContentInput>
-            <input
-                type="email"
-                name="email"
-                value={userInput.email}
-                onChange={handleInputChange}
-                placeholder="Email을 입력해주세요"
-            />
-            </ContentInput>
-        </Content>
+            {/* Email */}
+            <Content>
+                <ContentName>Email</ContentName>
+                <ContentInput>
+                <input
+                    type="email"
+                    name="email"
+                    value={userInput.email}
+                    onChange={handleInputChange}
+                    placeholder="Email을 입력해주세요"
+                />
+                </ContentInput>
+            </Content>
 
-        {/* Password */}
-        <Content>
-            <ContentName>비밀번호</ContentName>
-            <ContentInput>
-            <input
-                type="password"
-                name="password"
-                value={userInput.password}
-                onChange={handleInputChange}
-                placeholder="비밀번호를 입력해주세요"
-            />
-            </ContentInput>
-        </Content>
+            {/* Password */}
+            <Content>
+                <ContentName>비밀번호</ContentName>
+                <ContentInput>
+                <input
+                    type="password"
+                    name="password"
+                    value={userInput.password}
+                    onChange={handleInputChange}
+                    placeholder="비밀번호를 입력해주세요"
+                />
+                </ContentInput>
+            </Content>
 
-        {/* Login Button */}
-        <ButtonContainer>
-          <Button1 onClick={() => navigate(-1)}>이전</Button1>
-          <Button2 onClick={handleLogin}>로그인</Button2>
-        </ButtonContainer>
+            {/* Login Button */}
+            <ButtonContainer>
+                <Button1 onClick={() => navigate(-1)}>이전</Button1>
+                <Button2 onClick={handleLogin}>로그인</Button2>
+            </ButtonContainer>
         </Wrapper>
         <Footer />
     </GlobalWrapper>
@@ -90,8 +90,10 @@ export default Login;
 const GlobalWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-color: ${({ theme }) => theme.colors.gray[100]};
+    min-height: 100vh;
+    gap: 64px;
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.orange[100]};
 `;
 
 const Wrapper = styled.div`
@@ -99,29 +101,33 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    padding: 16px 192px;
+    gap: 32px;
+    width: 272px;
 `;
 
-const Title = styled.h1`
-    font-size: 24px;
-    font-weight: bold;
-    color: ${({ theme }) => theme.colors.primary};
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  font-size: ${({ theme }) => theme.typography.T1.fontSize};
+  font-weight: ${({ theme }) => theme.typography.T1.fontWeight};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 const Content = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0;
-    margin: 0 auto 0 0;
+    justify-content: center;
+    gap: 8px;
 `;
 
 const ContentName = styled.div`
     font-size: 20px;
     font-weight: bold;
     color: ${({ theme }) => theme.colors.primary};
-    width: 140px;
+    width: 72px;
     text-align: right;
     white-space: nowrap;
     margin-right: 16px;
@@ -149,19 +155,11 @@ const ContentInput = styled.div`
     }
 `;
 
-const ContentInputContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-`;
-
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 32px;
     justify-content: center;
-    background: ${({ theme }) => theme.colors.primary};
     padding: 16px 0;
 `;
 
@@ -170,8 +168,8 @@ const Button1 = styled.div`
     justify-content: center;
     align-items: center;
     color: ${({ theme }) => theme.colors.white};
-    width: 160px;
-    height: 56px;
+    width: 100px;
+    height: 40px;
     border-radius: 8px;
     background: ${({ theme }) => theme.colors.gray[400]};
     font-size: 16px;
@@ -183,11 +181,11 @@ const Button2 = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${({ theme }) => theme.colors.primary};
-    width: 160px;
-    height: 56px;
+    color: ${({ theme }) => theme.colors.white};
+    width: 100px;
+    height: 40px;
     border-radius: 8px;
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.primary};
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;

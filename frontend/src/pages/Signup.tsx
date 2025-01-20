@@ -5,6 +5,16 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const depts = [
+  "CH", "CS", "EE", "BS", "MAS", "BCS", "PH", "ME", "ID", 
+  "IE", "CE", "AE", "BiS", "NQE", "MS", "CBE", "TS", "BTM"
+];
+
+const interests_items =  [
+  "화학", "컴퓨터", "전기", "생명", "수학", "뇌", "물리", "기계", "디자인", 
+  "시스템", "환경", "우주", "바이오", "핵", "초전도", "에너지", "책", "주식"
+];
+
 const Signup: React.FC = () => {
   const navigate = useNavigate();
 
@@ -120,15 +130,20 @@ const Signup: React.FC = () => {
         {/* Major */}
         <Content>
           <ContentName>전공</ContentName>
-          <ContentInput>
-            <input
-              type="text"
-              name="major"
-              value={formData.major}
-              onChange={handleInputChange}
-              placeholder="전공을 입력해주세요"
-            />
-          </ContentInput>
+          <ContentInputContainer>
+            {depts.map((major) => (
+              <ContentInput key={major}>
+                <input
+                  type="radio"
+                  name="major"
+                  value={major}
+                  checked={formData.major === major}
+                  onChange={(e) => setFormData({ ...formData, major: e.target.value })}
+                />
+                {major}
+              </ContentInput>
+            ))}
+          </ContentInputContainer>
         </Content>
 
         {/* Resume */}
@@ -139,7 +154,7 @@ const Signup: React.FC = () => {
               name="resume"
               value={formData.resume}
               onChange={handleInputChange}
-              placeholder="이력서를 입력해주세요"
+              placeholder="이력을 입력해주세요"
             />
           </ContentInput>
         </Content>
@@ -148,9 +163,10 @@ const Signup: React.FC = () => {
         <Content>
           <ContentName>관심사</ContentName>
           <ContentInputContainer>
-            {["AI", "Web Development", "Data Science", "Physics", "Chemistry", "Biology"].map((interest) => (
+            {interests_items.map((interest) => (
               <ContentInput key={interest}>
                 <input
+                  width="100%"
                   type="checkbox"
                   checked={formData.interests.includes(interest)}
                   onChange={() => handleCheckboxSelect(interest)}
@@ -176,24 +192,30 @@ export default Signup;
 
 // Styled Components
 const GlobalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.colors.gray[100]};
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 64px;
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.orange[100]};
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 192px;
-`;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    width: 80%;
+  `;
 
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  font-size: ${({ theme }) => theme.typography.T1.fontSize};
+  font-weight: ${({ theme }) => theme.typography.T1.fontWeight};
   color: ${({ theme }) => theme.colors.primary};
 `;
 
@@ -211,7 +233,6 @@ const ContentName = styled.div`
   color: ${({ theme }) => theme.colors.primary};
   width: 140px;
   text-align: right;
-  white-space: nowrap;
   margin-right: 16px;
   flex-shrink: 0;
 `;
@@ -221,18 +242,19 @@ const ContentInput = styled.div`
   flex-direction: row;
   gap: 4px;
   align-items: center;
+  word-break: keep-all; /* 한글 줄바꿈 방지 */
 
   input,
   textarea {
     width: 100%;
     padding: 10px;
+    font-family: pretendard;
     font-size: ${({ theme }) => theme.typography.T7.fontSize};
     border: 1px solid ${({ theme }) => theme.colors.gray[400]};
     border-radius: 8px;
   }
-
   textarea {
-    resize: none;
+    min-width: 100%;
     height: 100px;
   }
 `;
@@ -249,7 +271,6 @@ const ButtonContainer = styled.div`
   flex-direction: row;
   gap: 32px;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.primary};
   padding: 16px 0;
 `;
 
@@ -258,8 +279,8 @@ const Button1 = styled.div`
   justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.colors.white};
-  width: 160px;
-  height: 56px;
+  width: 100px;
+  height: 40px;
   border-radius: 8px;
   background: ${({ theme }) => theme.colors.gray[400]};
   font-size: 16px;
@@ -271,11 +292,11 @@ const Button2 = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ theme }) => theme.colors.primary};
-  width: 160px;
-  height: 56px;
+  color: ${({ theme }) => theme.colors.white};
+  width: 100px;
+  height: 40px;
   border-radius: 8px;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.primary};
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
