@@ -36,7 +36,7 @@ const Search: React.FC = () => {
   >(null);
 
   const handleDepartmentClick = (dept: typeof departments[0]) => {
-    navigate(`/search/labs/${dept.id}`);
+    navigate(`/search/${dept.id}`);
   };
 
   useEffect(() => {

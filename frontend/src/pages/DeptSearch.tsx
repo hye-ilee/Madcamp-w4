@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
-import SearchTab from "../components/SearchTab";
 import Card from "../components/Card";
 import Pagination from "../components/Pagination";
 import Footer from "../components/Footer";
@@ -23,9 +22,9 @@ const DeptSearch: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        console.log("Fetching labs data...");
-        const response = await axios.get(`http://localhost:5000/api/labs/${major}`);
-        console.log("Labs data fetched:", response.data);
+        const response = await axios.get(`http://localhost:5000/api/labs`, {
+          params: { major }, // major를 쿼리 파라미터로 전달
+        });
         setLabsData(response.data);
       } catch (err) {
         setError("Failed to fetch labs data.");
@@ -35,12 +34,7 @@ const DeptSearch: React.FC = () => {
       }
     };
     fetchLabs();
-  }, []);
-
-  useEffect(() => {
-    let updatedData = labsData;
-    setCurrentPage(1);
-  }, [labsData]);
+  }, [major]);
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentData = labsData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -62,7 +56,7 @@ const DeptSearch: React.FC = () => {
         <Title>All {labsData.length} {major} Labs</Title>
         <CardGrid>
           {currentData.length > 0 ? (
-            currentData.map((data, index) => <Card key={index} {...data}/>)
+            currentData.map((data, index) => <Card key={index} {...data} />)
           ) : (
             <div>No data found.</div>
           )}
