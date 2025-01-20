@@ -27,8 +27,8 @@ import {
     }
 
     const handleLogin = () => {
-        //navigate("/login");
-        navigate("/");
+        navigate("/login");
+        // navigate("/");
     }
 
     return (
