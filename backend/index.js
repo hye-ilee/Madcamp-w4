@@ -149,10 +149,6 @@ app.get('/api/labs', async (req, res) => {
       const query = major ? { major } : {}; // major 필터가 있으면 조건에 추가
       const labs = await mongoose.connection.db.collection('labs').find(query).toArray();
 
-      if (!labs || labs.length === 0) {
-          return res.status(404).json({ message: 'No labs data found' });
-      }
-
       return res.status(200).json(labs);
   } catch (err) {
       console.error('Error fetching labs data:', err.message);
