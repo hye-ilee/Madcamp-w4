@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import axios from "axios";
 
 const ITEMS_PER_PAGE = 12;
+const labTextSrc = `/assets/lab_text.png`;
 
 const SearchLabs: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -102,7 +103,7 @@ const SearchLabs: React.FC = () => {
     <GlobalWrapper>
       <Header />
       <MainContainer>
-        <Title>LAB 둘러보기</Title>
+        <Title><StyledImage src={labTextSrc} alt="Lab Text" /> 둘러보기</Title>
         <SearchTabWrapper>
           <SearchTab
             showDepartments={true}
@@ -155,6 +156,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   align-self: stretch;
+  gap: 16px;
   font-size: ${({ theme }) => theme.typography.T1.fontSize};
   font-weight: ${({ theme }) => theme.typography.T1.fontWeight};
   color: ${({ theme }) => theme.colors.primary};
@@ -176,4 +178,9 @@ const CardGrid = styled.div`
 
 const PaginationWrapper = styled.div`
   margin-top: 20px;
+`;
+
+export const StyledImage = styled.img`
+  height: 48px; /* 부모 높이에 맞춤 */
+  width: auto; /* 비율 유지 */
 `;

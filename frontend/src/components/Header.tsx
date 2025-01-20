@@ -23,6 +23,7 @@ import {
     const dispatch = useDispatch();
 
     const { accountType, data } = useSelector((state: RootState) => state.user);
+    const userName = String(data?.name);
 
     const handleLogout = () => {
         dispatch(clearData());
@@ -31,7 +32,6 @@ import {
 
     const handleLogin = () => {
         navigate("/login");
-        // navigate("/");
     }
 
     return (
@@ -50,9 +50,9 @@ import {
             </NavItem>
           </Nav>
         </LogoAndNav>
-        {accountType ? (
+        {accountType != null && data ? (
             <UserSection>
-                <UserName onClick={() => navigate("/mypage")}>{String(data?.name ?? "not found")}</UserName>
+                <UserName>{userName} 님</UserName>
                 <AuthButton onClick={handleLogout}>Log Out</AuthButton>
             </UserSection>
         ) : (
