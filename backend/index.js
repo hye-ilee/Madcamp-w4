@@ -160,28 +160,6 @@ app.get('/api/labs', async (req, res) => {
   }
 });
 
-//학과별 랩 가져오기
-app.get('/api/labs/:major', async (req, res) => {
-    const { major } = req.params;
-
-    try {
-        const labs = await mongoose.connection.db
-            .collection('labs') // 'labs' 컬렉션 조회
-            .find({ major: major }) //해당하는 연구실 찾기
-            .toArray();
-        console.log(labs);
-
-        if (!labs || labs.length === 0) {
-            return res.status(404).json({ message: `No labs found for department "${major}"` });
-        }
-
-        return res.status(200).json(labs); // 성공적으로 데이터 반환
-    } catch (err) {
-        console.error('Error fetching labs data:', err.message);
-        return res.status(500).json({ message: 'Error fetching labs data' });
-    }
-});
-
 app.get('/api/labs/:LabName', async (req, res) => {
     const { LabName } = req.params; // URL에서 LabName 추출
 
