@@ -6,7 +6,6 @@ require("dotenv").config();
 const jwt = require('jsonwebtoken');
 
 const User = require('./models/user');
-const Student = require('./models/student');
 const Lab = require('./models/lab');
 const { Notice } = require('./models/notice');
 const { Comment } = require('./models/notice');
@@ -29,47 +28,24 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/register', async (req, res) => {
-    const { email, password, accountType } = req.body;
-    if (!['student', 'lab'].includes(accountType)) {
-        return res.status(400).json({ message: 'Invalid account type. Please select either "student" or "lab".' });
-    }
-    const newUser = new User({
-        accountType: accountType,
-        email: email,
-        password: password,
-    });
+    const { email, password, name, studentid, major, resume, interests } = req.body;
 
     try {
-        const savedUser = await newUser.save();
-        return res.status(201).json({ message: 'User registered successfully. Please proceed with further details.', userId: savedUser._id });
-    } catch (err) {
-        console.error(err);
-        return res.status(500).json({ message: 'Error registering user' });
-    }
-});
+      if (!email || !password || !name || !studentid || !major) {
+        return res.status(400).json({ message: 'Missing required fields.' });
+      }
+      const newUser = new User({
+          email: email,
+          password: password,
+          name: name,
+          studentid: studentid,
+          major: major,
+          resume: resume,
+          interests: interests
+      });
 
-
-app.post('/api/register/student', async (req, res) => {
-    const { userId, name, studentid, major, resume, interests } = req.body;
-
-    try {
-        const user = await User.findById(userId); // 사용자의 정보 가져오기
-        if (!user || user.accountType !== 'student') {
-            return res.status(400).json({ message: 'Invalid user or account type mismatch' });
-        }
-        const newStudent = new Student({
-            userid: user._id,
-            email: user.email,
-            password: user.password, // 이미 해시된
-            name: name,
-            studentid: studentid,
-            major: major,
-            resume: resume,
-            interests: interests
-        });
-
-        await newStudent.save();
-        return res.status(201).json({ message: 'Student registered successfully!' });
+        await newUser.save();
+        return res.status(201).json({ message: 'Registered successfully!' });
         
     } catch (err) {
         console.error(err);
@@ -77,70 +53,28 @@ app.post('/api/register/student', async (req, res) => {
     }
 });
   
-app.post('/api/register/lab', async (req, res) => {
-    const { userId, dept, labname } = req.body;
-
-    try {
-        const user = await User.findById(userId);
-        if (!user || user.accountType !== 'lab') {
-            return res.status(400).json({ message: 'Invalid user or account type mismatch' });
-        }
-        if (!['CS', 'ID'].includes(dept)) {
-            return res.status(400).json({ message: 'Invalid department. Must be "CS" or "ID".' });
-        }
-
-        const labCollection = dept === "CS" ? 'cslabs' : 'idlabs';
-        
-        // Use findOne to search for the lab by key (labname)
-        const lab = await mongoose.connection.db.collection(labCollection).findOne({ [labname]: { $exists: true } });
-        if (!lab) {
-            return res.status(400).json({ message: `Invalid lab name for ${dept} department` });
-        }
-        const labData = lab[labname];
-        console.log(labData);
-        const newLab = new Lab({
-            userid: user._id,
-            email: user.email,
-            password: user.password,
-            major: dept,
-            name: labname,
-            lab_data: labData
-        });
-        console.log(newLab);
-        // await newLab.save();
-        await mongoose.connection.db.collection('labusers').insertOne(labData);
-        return res.status(201).json({ message: 'Lab registered successfully!' });
-    } catch (err) {
-        console.error(err);
-        return res.status(500).json({ message: 'Error registering lab', error: err.message });
-    }
-});
-
 app.post('/api/login', async (req, res) => {
-    const { email, password } = req.body;
-  
-    try {
-      const user = await User.findOne({ email });
-      if (!user) {
-        return res.status(400).json({ message: 'Unregistered email' });
-      }
-    
-      if (password !== user.password) {
-        return res.status(400).json({ message: 'Invalid password'});
-      }
-  
-      const token = jwt.sign(
-        { userId: user._id, accountType: user.accountType }, // 페이로드에 사용자 정보 추가
-        process.env.JWT_SECRET, // JWT 비밀 키 (환경 변수로 설정)
-        { expiresIn: '1h' } // 토큰 만료 시간 설정
-      );
+  const { email, password } = req.body;
 
-      return res.status(200).json({ message: 'Login successful', token: token });
-    } catch (err) {
+  try {
+      if (!email || !password) {
+          return res.status(400).json({ message: 'Missing required fields.' });
+      }
+      const user = await User.findOne({ email: email });
+      if (!user) {
+          return res.status(404).json({ message: 'User not found.' });
+      }
+      const isMatch = user.password === password;
+      if (!isMatch) {
+          return res.status(401).json({ message: 'Incorrect password.' });
+      }
+      return res.status(200).json({ message: 'Login successful!', user });
+  } catch (err) {
       console.error(err);
-      return res.status(500).json({ message: 'Server error' });
-    }
+      return res.status(500).json({ message: 'Error logging in user' });
+  }
 });
+
 
 app.get('/api/labs', async (req, res) => {
   const { major } = req.query; // major 필터 값 가져오기
