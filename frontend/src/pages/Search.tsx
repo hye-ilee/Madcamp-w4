@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 const departments = [
   { id: "chem", name: "화학과", image: "bg_chem.png" },
-  { id: "cs", name: "전산학부", image: "bg_cs.png" },
+  { id: "CS", name: "전산학부", image: "bg_cs.png" },
   { id: "ee", name: "전기및전자공학부", image: "bg_ee.png" },
   { id: "bio", name: "생명과학과", image: "bg_bio.png" },
   { id: "math", name: "수리과학과", image: "bg_math.png" },
   { id: "brain", name: "뇌인지과학과", image: "bg_brain.png" },
   { id: "phy", name: "물리학과", image: "bg_phy.png" },
   { id: "ms", name: "기계공학과", image: "bg_ms.png" },
-  { id: "id", name: "산업디자인학과", image: "bg_id.png" },
+  { id: "ID", name: "산업디자인학과", image: "bg_id.png" },
   { id: "ise", name: "산업및시스템공학과", image: "bg_ise.png" },
   { id: "cee", name: "건설및환경공학과", image: "bg_cee.png" },
   { id: "ae", name: "항공우주공학과", image: "bg_ae.png" },

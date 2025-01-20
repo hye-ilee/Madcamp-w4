@@ -157,6 +157,28 @@ app.get('/api/labs', async (req, res) => {
     }
 });
 
+//학과별 랩 가져오기
+app.get('/api/labs/:major', async (req, res) => {
+    const { major } = req.params;
+
+    try {
+        const labs = await mongoose.connection.db
+            .collection('labs') // 'labs' 컬렉션 조회
+            .find({ major: major }) //해당하는 연구실 찾기
+            .toArray();
+        console.log(labs);
+
+        if (!labs || labs.length === 0) {
+            return res.status(404).json({ message: `No labs found for department "${major}"` });
+        }
+
+        return res.status(200).json(labs); // 성공적으로 데이터 반환
+    } catch (err) {
+        console.error('Error fetching labs data:', err.message);
+        return res.status(500).json({ message: 'Error fetching labs data' });
+    }
+});
+
 app.get('/api/labs/:LabName', async (req, res) => {
     const { LabName } = req.params; // URL에서 LabName 추출
 
@@ -215,9 +237,64 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
   }
 });
 
+//notice 추가
+app.post('/api/notices/:LabName', async (req, res) => {
+    const { LabName } = req.params;
+    const { title, content } = req.body;
 
+    try {
+        const notice = new Notice({
+            name: LabName,
+            title: title,
+            content: content,
+            comments: []
+        });
+        await notice.save();
+        return res.status(201).json({ message: 'Notice added successfully.' });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Failed to add notice.' });
+    }
+});
+
+//특정 글 수정
+app.put('/api/notices/:LabName/:Index', async (req, res) => {
+    const { LabName, Index } = req.params;
+    const { title, content } = req.body;
+
+    try {
+        const notice = await Notice.findOne({ name: LabName, index: Index });
+        if (!notice) {
+            return res.status(404).json({ message: 'Notice not found.' });
+        }
+        notice.title = title;
+        notice.content = content;
+        await notice.save();
+        return res.status(200).json({ message: 'Notice updated successfully.' });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Failed to update notice.' });
+    }
+});
+
+//특정 글 삭제
+app.delete('/api/notices/:LabName/:Index', async (req, res) => {
+    const { LabName, Index } = req.params;
+
+    try {
+        const notice = await Notice.findOne({ name: LabName, index: Index });
+        if (!notice) {
+            return res.status(404).json({ message: 'Notice not found.' });
+        }
+        await notice.remove();
+        return res.status(200).json({ message: 'Notice deleted successfully.' });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Failed to delete notice.' });
+    }
+});
   
-// 댓글 추가 API
+// 댓글 or 대댓글 추가 API
 app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
     const { LabName, Index } = req.params;
     const { userId, name, content, parentCommentId } = req.body;
@@ -254,7 +331,70 @@ app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
       console.error(err);
       res.status(500).json({ message: "Failed to add comment." });
     }
-  });
+});
+
+// 댓글 or 대댓글 수정 API
+app.put("/api/notices/:LabName/:Index/comments/:CommentId", async (req, res) => {
+    const { LabName, Index, CommentId } = req.params;
+    const { content } = req.body;
+  
+    try {
+      const notice = await Notice.findOne({ name: LabName, index: Index });
+      if (!notice) {
+        return res.status(404).json({ message: "Notice not found." });
+      }
+      const comment = notice.comments.id(CommentId);
+      if (!comment) {
+        return res.status(404).json({ message: "Comment not found." });
+      }
+      comment.content = content;
+      comment.timestamp = new Date();//수정시간 업뎃
+      if (comment.isReply) {
+        const parentComment = notice.comments.id(comment.parentCommentId);
+        if (parentComment) {
+          const reply = parentComment.replies.find(reply => reply._id.toString() === commentId);
+          if (reply) {
+            reply.content = content;
+            reply.timestamp = new Date();
+          }
+        }
+      }
+      await notice.save();
+      res.status(200).json({ message: "Comment updated successfully." });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Failed to update comment." });
+    }
+});
+
+// 댓글 or 대댓글 삭제 API
+app.delete("/api/notices/:LabName/:Index/comments/:CommentId", async (req, res) => {
+    const { LabName, Index, CommentId } = req.params;
+  
+    try {
+      const notice = await Notice.findOne({ name: LabName, index: Index });
+      if (!notice) {
+        return res.status(404).json({ message: "Notice not found." });
+      }
+      const comment = notice.comments.id(CommentId);
+      if (!comment) {
+        return res.status(404).json({ message: "Comment not found." });
+      }
+      if (comment.isReply) {
+        const parentComment = notice.comments.id(comment.parentCommentId);
+        if (parentComment) {
+          parentComment.replies = parentComment.replies.filter(reply => reply._id.toString() !== commentId);
+        }
+      } else {
+        comment.remove();
+      }
+      await notice.save();
+      res.status(200).json({ message: "Comment deleted successfully." });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Failed to delete comment." });
+    }
+});
   
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
