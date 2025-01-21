@@ -40,7 +40,7 @@ const RecruitWrapper = styled.div<{ bgcolor: string }>`
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border-radius: 8px;
+    border-radius: 16px;
     background: ${({ bgcolor }) => bgcolor};
 `;
 

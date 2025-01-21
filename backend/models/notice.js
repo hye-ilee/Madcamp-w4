@@ -16,6 +16,7 @@ const noticeSchema = new mongoose.Schema({
   index: { type: Number, required: true }, // 공지 번호
   title: { type: String, required: true }, // 공지 제목
   personnel: { type: Number, required: true }, // 모집 인원
+  information: { type: String, enum: ['개별연구', '랩인턴', '졸업연구', '모집X'], required: true}, // 모집 정보
   status: { type: String, enum: ['모집중', '모집완료', '마감임박', '지원마감'], required: true }, // 상태
   uploadDate: { type: Date, required: true }, // 업로드 날짜
   deadlineDate: { type: Date, required: true }, // 마감 날짜
