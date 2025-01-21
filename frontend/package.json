@@ -55,5 +55,7 @@
   },
   "devServer": {
     "allowedHosts": "all"
-  }
+  },
+  "proxy": "https://Jjolab-env4.eba-qqth2vcp.ap-northeast-2.elasticbeanstalk.com/",
+  "homepage": "https://Jjolab-env4.eba-qqth2vcp.ap-northeast-2.elasticbeanstalk.com/"
 }
