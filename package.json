@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "serve": "nodemon backend/index.js",
-    "start": "yarn --cwd backend install && node backend/index.js",
-    "build": "yarn --cwd frontend install && yarn --cwd frontend build"
+    "start": "cd backend && yarn install && yarn nodemon",
+    "build": "cd frontend && yarn install && yarn build"
   },
   "dependencies": {
     "dotenv": "^16.4.7"
