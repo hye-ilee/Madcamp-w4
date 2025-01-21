@@ -15,6 +15,7 @@ import DeptSearch from './pages/DeptSearch';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Recruiting from './pages/Recruiting';
+import Mypage from './pages/Mypage';
 
 function App() {
   return (
@@ -26,8 +27,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} /> 
               <Route path="/signup" element={<Signup />} />
-              <Route path="/search" element={<Search />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/mypage" element={<Mypage />} />
+
+              <Route path="/search" element={<Search />} />
               <Route path="/search/:major" element={<DeptSearch />} />
               <Route path="/search/labs" element={<SearchLabs />} />
               <Route path="/search/labs/:LabName" element={<LabInfo />} />

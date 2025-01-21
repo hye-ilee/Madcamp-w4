@@ -31,7 +31,7 @@ export const CardContent = styled.div`
     padding: 16px 16px 0 16px;
     margin-bottom: 16px;
     border-radius: 16px;
-    background-color: ${({ theme }) => theme.colors.gray[100]};
+    background-color: ${({ theme }) => theme.colors.white};
     overflow: hidden;
     box-sizing: border-box;
 `;

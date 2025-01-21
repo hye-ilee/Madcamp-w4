@@ -26,7 +26,7 @@ const LabBoard: React.FC = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/notices/${LabName}/${Index}`
+          `http://localhost:8080/api/notices/${LabName}/${Index}`
         );
         if (!response.data) {
           setError("No notice found.");
@@ -53,7 +53,7 @@ const LabBoard: React.FC = () => {
     if (!newComment.trim()) return;
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/notices/${LabName}/${Index}/comments`,
+        `http://localhost:8080/api/notices/${LabName}/${Index}/comments`,
         {
           userId: "USER_ID", // 실제 유저 ID를 넣으세요.
           name: "User Name", // 실제 유저 이름을 넣으세요.

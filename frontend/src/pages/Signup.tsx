@@ -55,7 +55,7 @@ const Signup: React.FC = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/register", formData);
+      const response = await axios.post("http://localhost:8080/api/register", formData);
       console.log("Student registered successfully:", response.data);
       alert("회원가입이 완료되었습니다. 다시 로그인해주세요.");
       navigate("/");

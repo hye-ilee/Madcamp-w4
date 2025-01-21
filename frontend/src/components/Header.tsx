@@ -52,7 +52,7 @@ import {
         </LogoAndNav>
         {accountType != null && data ? (
             <UserSection>
-                <UserName>{userName} 님</UserName>
+                <UserName onClick={() => navigate("/mypage")}>{userName} 님</UserName>
                 <AuthButton onClick={handleLogout}>Log Out</AuthButton>
             </UserSection>
         ) : (

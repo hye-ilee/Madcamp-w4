@@ -27,7 +27,7 @@ const SearchLabs: React.FC = () => {
       setError(null);
       try {
         console.log("Fetching labs data...");
-        const response = await axios.get("http://localhost:5000/api/labs");
+        const response = await axios.get("http://localhost:8080/api/labs");
         console.log("Labs data fetched:", response.data);
         setLabsData(response.data);
         setFilteredData(response.data);

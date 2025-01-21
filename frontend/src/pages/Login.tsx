@@ -32,7 +32,7 @@ const Login: React.FC = () => {
         }
     
         try {
-          const response = await axios.post("http://localhost:5000/api/login", userInput);
+          const response = await axios.post("http://localhost:8080/api/login", userInput);
           console.log("Student registered successfully:", response.data);
           dispatch(setStudentData(response.data.user));
           alert(`${response.data.user.name}님 로그인되었습니다.`);

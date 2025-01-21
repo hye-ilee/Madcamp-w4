@@ -22,7 +22,7 @@ const DeptSearch: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`http://localhost:5000/api/labs`, {
+        const response = await axios.get(`http://localhost:8080/api/labs`, {
           params: { major }, // major를 쿼리 파라미터로 전달
         });
         setLabsData(response.data);
