@@ -25,7 +25,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ description }) => {
     return () => {
       if (closeTimeout) clearTimeout(closeTimeout); // 컴포넌트 언마운트 시 타이머 제거
     };
-  }, [isVisible]);
+  }, [isVisible, closeTimeout]);
 
   return (
     <Container
