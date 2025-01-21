@@ -137,22 +137,20 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
     const notice = await Notice.findOne({ name: LabName, index: Number(Index) })
       .populate({
         path: "comments.replies",
-        populate: { path: "replies" }, // Nested population for replies
-      })
-      .exec();
-
+        populate: {path: "replies"},
+      });
     if (!notice) {
       return res.status(404).json({ message: "Notice not found." });
     }
 
-    res.status(200).json(notice);
+    res.status(200).json({ notice });
   } catch (err) {
     console.error("Error fetching notice:", err.message);
     res.status(500).json({ message: "Failed to fetch notice." });
   }
 });
 
-//notice 추가
+//notice 추가 - by연구실
 app.post('/api/notices/:LabName', async (req, res) => {
     const { LabName } = req.params;
     const { title, content } = req.body;
@@ -172,7 +170,7 @@ app.post('/api/notices/:LabName', async (req, res) => {
     }
 });
 
-//특정 글 수정
+//특정 글 수정 - by연구실
 app.put('/api/notices/:LabName/:Index', async (req, res) => {
     const { LabName, Index } = req.params;
     const { title, content } = req.body;
@@ -192,7 +190,7 @@ app.put('/api/notices/:LabName/:Index', async (req, res) => {
     }
 });
 
-//특정 글 삭제
+//특정 글 삭제 - by연구실
 app.delete('/api/notices/:LabName/:Index', async (req, res) => {
     const { LabName, Index } = req.params;
 
@@ -229,6 +227,13 @@ app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
         parentCommentId: parentCommentId || null,
         replies: []
       };
+
+      const now = new Date();
+      if (isNaN(now)) {
+        console.error('Invalid Date object created:', now);
+        return res.status(500).json({ message: "Invalid server date." });
+      }
+
   
       if (parentCommentId) {
         const parentComment = notice.comments.id(parentCommentId);
@@ -309,6 +314,18 @@ app.delete("/api/notices/:LabName/:Index/comments/:CommentId", async (req, res) 
       console.error(err);
       res.status(500).json({ message: "Failed to delete comment." });
     }
+});
+
+//deadlineDate 정렬위해 모든랩 모든공지 다 가져오기
+app.get('/api/notices', async (req, res) => {
+  try {
+      const notices = await Notice.find().sort({ deadlineDate: 1 }); // 1 for ascending order
+      // const notices = await mongoose.connection.db.collection('notices').find({ status: { $in: ['모집중', '마감임박'] } })
+      return res.status(200).json(notices);
+  } catch (err) {
+      console.error('Error fetching recruiting notices:', err.message);
+      return res.status(500).json({ message: 'Error fetching recruiting notices' });
+  }
 });
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
