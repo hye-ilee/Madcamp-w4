@@ -32,8 +32,8 @@ const LabBoard: React.FC = () => {
           setError("No notice found.");
           return;
         }
-        setBoardData(response.data);
-        setComments(response.data.comments || []);
+        setBoardData(response.data.notice);
+        setComments(response.data.notice.comments || []);
       } catch (err) {
         setError("Failed to fetch board data.");
       } finally {
@@ -79,6 +79,7 @@ const LabBoard: React.FC = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
+  if (!boardData) return <div>Notice data not found</div>;
 
   return (
     <GlobalWrapper>
