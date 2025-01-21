@@ -11,7 +11,6 @@ const Home: React.FC = () => {
   const [boardData, setBoardData] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [comments, setComments] = useState<any[]>([]);
 
   const LabName = "Next interface Lab";
   const Index = 16;
@@ -29,7 +28,6 @@ const Home: React.FC = () => {
           return;
         }
         setBoardData(response.data);
-        setComments(response.data.comments || []);
       } catch (err) {
         setError("Failed to fetch board data.");
       } finally {
