@@ -3,5 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "dependencies": {}
+  "scripts": {
+    "serve": "nodemon backend/index.js",
+    "start": "node backend/index.js",
+    "build": "yarn --cwd frontend build"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
 }
