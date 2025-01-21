@@ -1,8 +1,8 @@
+require("dotenv").config({ path: "./.env" });
 const express = require('express');
 const mongoose = require("mongoose");
 const cors = require("cors");
-const http = require('http');
-require("dotenv").config();
+const path = require('path');
 const jwt = require('jsonwebtoken');
 
 const User = require('./models/user');
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: "*"}));
 // app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected successfully!'))
   .catch((err) => console.log('MongoDB connection error:', err));
 
@@ -305,6 +305,11 @@ app.delete("/api/notices/:LabName/:Index/comments/:CommentId", async (req, res) 
       console.error(err);
       res.status(500).json({ message: "Failed to delete comment." });
     }
+});
+
+app.use(express.static(path.join(__dirname, "frontend", "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
 });
   
 app.listen(port, () => {
