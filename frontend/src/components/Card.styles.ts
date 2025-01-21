@@ -26,11 +26,14 @@ export const CardContent = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    width: 90%;
+    width: 100%;
     height: 100%;
-    padding: 16px;
+    padding: 16px 16px 0 16px;
+    margin-bottom: 16px;
     border-radius: 16px;
     background-color: ${({ theme }) => theme.colors.gray[100]};
+    overflow: hidden;
+    box-sizing: border-box;
 `;
 
 export const TopContainer = styled.div`
@@ -100,6 +103,25 @@ export const CenterFrame = styled.div<{ img_url: string }>`
     color: ${({ theme }) => theme.colors.black};
 `;
 
+export const CenterText = styled.div`
+    display: flex;
+    flex-shrink: 0;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 8px;
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.primary};
+    font-size: ${({ theme }) => theme.typography.T3.fontSize};
+    font-weight: ${({ theme }) => theme.typography.T3.fontWeight};
+
+    line-height: 1.2;
+    white-space: normal;
+    overflow: hidden;
+`;
+
 export const BottomTitle = styled.div`
     font-size: ${({ theme }) => theme.typography.T5.fontSize};
     font-weight: ${({ theme }) => theme.typography.T5.fontWeight};
@@ -110,6 +132,24 @@ export const BottomText = styled.div`
     font-size: ${({ theme }) => theme.typography.T7.fontSize};
     font-weight: ${({ theme }) => theme.typography.T7.fontWeight};
     color: ${({ theme }) => theme.colors.black};
+`;
+
+export const DetailText = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
+
+    font-size: ${({ theme }) => theme.typography.T7.fontSize};
+    font-weight: ${({ theme }) => theme.typography.T7.fontWeight};
+    color: ${({ theme }) => theme.colors.black};
+
+    overflow: hidden; /* 넘치는 내용 숨김 */
+    text-overflow: ellipsis; /* 말 줄임표 추가 */
+    white-space: normal; /* 여러 줄 허용 */
+    line-height: 1.5;
+    max-height: 100%;
 `;
 
 export const EmailContainer = styled.div`

@@ -17,7 +17,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ description }) => {
       setIsDelayedVisible(true); // 모달 표시
     } else {
       const timeout = setTimeout(() => {
-        setIsDelayedVisible(false); // 0.5초 후 모달 숨기기
+        setIsDelayedVisible(false); // 0.1초 후 모달 숨기기
       }, 100);
       setCloseTimeout(timeout); // 타이머 저장
     }
@@ -70,22 +70,22 @@ const QuestionText = styled.div`
 `;
 
 const ModalOverlay = styled.div`
-  position: absolute;
-  top: 30px; /* ? 아이콘 바로 아래에 모달 표시 */
+  position: fixed; /* 뷰포트 기준으로 위치 설정 */
+  top: 50%; /* 화면 중앙에 배치 */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%); /* 화면 중앙 정렬 */
   background-color: rgba(0, 0, 0, 0.5);
   padding: 8px;
   border-radius: 8px;
-  z-index: 1000;
+  z-index: 1000; /* 카드보다 높은 z-index 설정 */
 `;
 
 const ModalContent = styled.div`
   background-color: white;
   padding: 16px;
   border-radius: 8px;
-  width: 400px; /* 너비를 넓게 설정 */
-  max-width: 500px; /* 최대 너비 설정 */
+  width: 500px; /* 너비를 넓게 설정 */
+  max-width: 600px; /* 최대 너비 설정 */
   text-align: left;
   white-space: pre-wrap; /* 줄바꿈 유지 */
   font-size: 14px;

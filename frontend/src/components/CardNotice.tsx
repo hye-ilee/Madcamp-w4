@@ -1,128 +1,93 @@
 import React from "react";
 import {
   CardContainer,
-  TopContainer,
   TopContent,
-  TopName,
-  TopFlagLocFrame,
-  TopFlag,
-  TopLoc,
   TopLab,
-  CenterFrame,
+  CenterText,
   BottomTitle,
   BottomText,
+  DetailText,
   EmailContainer,
   KeywordContainer,
-  KeywordTitle,
-  KeywordList,
-  KeywordText,
-  RecruitContainer,
   RecruitLeft,
-  RecruitText,
   CardContent,
 } from "./Card.styles";
 import RecruitIcon from "./RecruitIcon";
+import StatusIcon from "./StatusIcon";
 import { useNavigate } from "react-router-dom";
 import QuestionModal from "./QuestionModal";
 
 // 데이터 타입 정의
 interface CardNoticeProps {
-  name: string;
-  major: string;
-  thumbnail: string;
-  email: string;
-  detail: string;
-  LabPI: string;
-  LabKeywords: string[];
-  recruitInfo: {
-    research: number;
-    interns: number;
-    graduates: string;
-  };
+  name: string,
+  index: number,
+  title: string,
+  personnel: number,
+  information: string,
+  status: string,
+  uploadDate: Date,
+  deadlineDate: Date,
+  detail: string,
 }
 
 const CardNotice: React.FC<CardNoticeProps> = ({
   name,
-  major,
-  thumbnail,
-  email,
+  index,
+  title,
+  personnel,
+  information,
+  status,
+  uploadDate,
+  deadlineDate,
   detail,
-  LabPI,
-  LabKeywords = [],
-  recruitInfo = { research: 0, interns: 0, graduates: "N/A" },
 }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(`/search/labs/${name}`);
+    navigate(`/search/labs/${name}/${index}`);
   }
 
   return (
     <CardContainer onClick={handleCardClick}>
       <CardContent>
         {/* 상단 정보 */}
-        <TopContainer>
-          <TopContent>
-            <TopName>{LabPI}</TopName>
-            <TopFlagLocFrame>
-              <TopFlag>🎓</TopFlag>
-              <TopLoc>{major}</TopLoc>
-            </TopFlagLocFrame>
-          </TopContent>
+        <TopContent>
           <TopLab>{name}</TopLab>
-        </TopContainer>
+          <StatusIcon recruit={status} />
+        </TopContent>
 
         {/* 이미지 중앙 영역 */}
-        <CenterFrame img_url={thumbnail}>
-          {/* 이미지 위 텍스트 */}
-        </CenterFrame>
-
-        {/* 이메일 및 설명 */}
-        <EmailContainer>
-          <BottomTitle>E-mail</BottomTitle>
-          <BottomText>{email}</BottomText>
-        </EmailContainer>
-
-        <EmailContainer>
-          <BottomTitle>상세 내용</BottomTitle>
-          <QuestionModal description={detail} />
-        </EmailContainer>
-
-        {/* 키워드 */}
-        <KeywordContainer>
-          <KeywordTitle>Lab 키워드</KeywordTitle>
-          <KeywordList>
-            {LabKeywords.map((keyword, index) => (
-              <KeywordText key={index}>#{keyword}</KeywordText>
-            ))}
-          </KeywordList>
-        </KeywordContainer>
+        <CenterText>
+          {title}
+        </CenterText>
 
         {/* 모집 정보 */}
+        <EmailContainer>
+          <RecruitLeft>
+            <RecruitIcon recruit={information} />
+            <BottomTitle>{personnel}명</BottomTitle>
+          </RecruitLeft>
+        </EmailContainer> 
+
         <KeywordContainer>
-        <BottomTitle>모집 정보</BottomTitle>
-        <RecruitContainer>
-          <RecruitLeft>
-            <RecruitIcon recruit="개별연구" />
-            <RecruitText>{recruitInfo.research}명</RecruitText>
-          </RecruitLeft>
-          <RecruitText>상시 모집 중</RecruitText>
-        </RecruitContainer>
-        <RecruitContainer>
-          <RecruitLeft>
-            <RecruitIcon recruit="랩인턴" />
-            <RecruitText>{recruitInfo.interns}명</RecruitText>
-          </RecruitLeft>
-          <RecruitText>~2025.01.31.</RecruitText>
-        </RecruitContainer>
-        <RecruitContainer>
-          <RecruitLeft>
-            <RecruitIcon recruit="졸업연구" />
-            <RecruitText>{recruitInfo.graduates}</RecruitText>
-          </RecruitLeft>
-          <RecruitText></RecruitText>
-        </RecruitContainer>
-      </KeywordContainer>
+          <EmailContainer>
+            <BottomTitle>게시일</BottomTitle>
+            <BottomText>{new Date(uploadDate).toISOString().split("T")[0]}</BottomText>
+          </EmailContainer>
+          <EmailContainer>
+            <BottomTitle>마감일</BottomTitle>
+            <BottomText>{new Date(deadlineDate).toISOString().split("T")[0]}</BottomText>
+          </EmailContainer>
+        </KeywordContainer>
+
+        <KeywordContainer>
+          <EmailContainer>
+            <BottomTitle>상세 내용</BottomTitle>
+            <QuestionModal description={detail} />
+          </EmailContainer>
+          <DetailText>{detail}</DetailText>
+        </KeywordContainer>
+
       </CardContent>
     </CardContainer>
   );
