@@ -132,62 +132,23 @@ app.get('/api/notices/:LabName', async (req, res) => {
 // 특정 Notice 가져오기
 app.get("/api/notices/:LabName/:Index", async (req, res) => {
   const { LabName, Index } = req.params;
-
+  
   try {
-    const notice = await Notice.findOne({ name: LabName, index: Number(Index) })
+    const notice = await Notice.findOne({ name: LabName, index: Number(Index)})
       .populate({
         path: "comments.replies",
         populate: {path: "replies"},
       });
+
     if (!notice) {
       return res.status(404).json({ message: "Notice not found." });
     }
 
-    res.status(200).json({ notice });
+    res.status(200).json(notice);
   } catch (err) {
     console.error("Error fetching notice:", err.message);
     res.status(500).json({ message: "Failed to fetch notice." });
   }
-});
-
-//notice 추가 - by연구실
-app.post('/api/notices/:LabName', async (req, res) => {
-    const { LabName } = req.params;
-    const { title, content } = req.body;
-
-    try {
-        const notice = new Notice({
-            name: LabName,
-            title: title,
-            content: content,
-            comments: []
-        });
-        await notice.save();
-        return res.status(201).json({ message: 'Notice added successfully.' });
-    } catch (err) {
-        console.error(err);
-        return res.status(500).json({ message: 'Failed to add notice.' });
-    }
-});
-
-//특정 글 수정 - by연구실
-app.put('/api/notices/:LabName/:Index', async (req, res) => {
-    const { LabName, Index } = req.params;
-    const { title, content } = req.body;
-
-    try {
-        const notice = await Notice.findOne({ name: LabName, index: Index });
-        if (!notice) {
-            return res.status(404).json({ message: 'Notice not found.' });
-        }
-        notice.title = title;
-        notice.content = content;
-        await notice.save();
-        return res.status(200).json({ message: 'Notice updated successfully.' });
-    } catch (err) {
-        console.error(err);
-        return res.status(500).json({ message: 'Failed to update notice.' });
-    }
 });
 
 //특정 글 삭제 - by연구실

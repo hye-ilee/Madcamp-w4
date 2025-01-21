@@ -8,24 +8,23 @@ interface QuestionModalProps {
 const QuestionModal: React.FC<QuestionModalProps> = ({ description }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDelayedVisible, setIsDelayedVisible] = useState(false);
-  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  // 모달 표시와 딜레이 처리
   useEffect(() => {
+    let timeout: NodeJS.Timeout | null = null; // 타이머 ID를 지역 변수로 선언
+
     if (isVisible) {
-      if (closeTimeout) clearTimeout(closeTimeout); // 기존 타이머 제거
+      if (timeout) clearTimeout(timeout); // 기존 타이머 제거
       setIsDelayedVisible(true); // 모달 표시
     } else {
-      const timeout = setTimeout(() => {
+      timeout = setTimeout(() => {
         setIsDelayedVisible(false); // 0.1초 후 모달 숨기기
       }, 100);
-      setCloseTimeout(timeout); // 타이머 저장
     }
 
     return () => {
-      if (closeTimeout) clearTimeout(closeTimeout); // 컴포넌트 언마운트 시 타이머 제거
+      if (timeout) clearTimeout(timeout); // 컴포넌트 언마운트 시 타이머 제거
     };
-  }, [isVisible, closeTimeout]);
+  }, [isVisible]);
 
   return (
     <Container

@@ -32,8 +32,8 @@ const LabBoard: React.FC = () => {
           setError("No notice found.");
           return;
         }
-        setBoardData(response.data.notice);
-        setComments(response.data.notice.comments || []);
+        setBoardData(response.data);
+        setComments(response.data.comments || []);
       } catch (err) {
         setError("Failed to fetch board data.");
       } finally {
