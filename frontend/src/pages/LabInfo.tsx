@@ -24,8 +24,8 @@ const LabInfo: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const noticesResponse = await axios.get(`http://localhost:5000/api/notices/${LabName}`);
-        const labResponse = await axios.get(`http://localhost:5000/api/labs/${LabName}`);
+        const noticesResponse = await axios.get(`http://localhost:8080/api/notices/${LabName}`);
+        const labResponse = await axios.get(`http://localhost:8080/api/labs/${LabName}`);
         setRecruitData(noticesResponse.data || []);
         setLabInfo(labResponse.data || null);
       } catch (err) {

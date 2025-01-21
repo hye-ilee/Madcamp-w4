@@ -22,7 +22,7 @@ const Home: React.FC = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/notices/${LabName}/${Index}`
+          `http://localhost:8080/api/notices/${LabName}/${Index}`
         );
         if (!response.data) {
           setError("No notice found.");

@@ -11,7 +11,7 @@ const { Notice } = require('./models/notice');
 const { Comment } = require('./models/notice');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 // Middleware
 app.use(express.json());
@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .catch((err) => console.log('MongoDB connection error:', err));
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+  res.status(200).send('OK');
 });
 
 app.post('/api/register', async (req, res) => {
