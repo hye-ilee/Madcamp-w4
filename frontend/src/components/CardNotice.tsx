@@ -26,12 +26,12 @@ import { useNavigate } from "react-router-dom";
 import QuestionModal from "./QuestionModal";
 
 // 데이터 타입 정의
-interface CardProps {
+interface CardNoticeProps {
   name: string;
   major: string;
   thumbnail: string;
   email: string;
-  description: string;
+  detail: string;
   LabPI: string;
   LabKeywords: string[];
   recruitInfo: {
@@ -41,12 +41,12 @@ interface CardProps {
   };
 }
 
-const Card: React.FC<CardProps> = ({
+const CardNotice: React.FC<CardNoticeProps> = ({
   name,
   major,
   thumbnail,
   email,
-  description,
+  detail,
   LabPI,
   LabKeywords = [],
   recruitInfo = { research: 0, interns: 0, graduates: "N/A" },
@@ -84,8 +84,8 @@ const Card: React.FC<CardProps> = ({
         </EmailContainer>
 
         <EmailContainer>
-          <BottomTitle>연구실 설명</BottomTitle>
-          <QuestionModal description={description} />
+          <BottomTitle>상세 내용</BottomTitle>
+          <QuestionModal description={detail} />
         </EmailContainer>
 
         {/* 키워드 */}
@@ -128,4 +128,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default Card;
+export default CardNotice;

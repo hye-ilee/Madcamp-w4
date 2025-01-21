@@ -7,6 +7,7 @@ import CommentBlock from "../components/CommentBlock";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import StatusIcon from "../components/StatusIcon";
+import RecruitIcon from "../components/RecruitIcon";
 
 const LabBoard: React.FC = () => {
   const { LabName, Index } = useParams<{ LabName: string; Index: string }>();
@@ -89,6 +90,8 @@ const LabBoard: React.FC = () => {
         <BoardStatus>
             <BoardStatusItem>상태 : <div style={{ marginLeft: "6px" }}></div>
               <StatusIcon recruit={boardData.status} /></BoardStatusItem>
+            <BoardStatusItem>종류 : <div style={{ marginLeft: "6px" }}></div>
+              <RecruitIcon recruit={boardData.information} /></BoardStatusItem>
             <BoardStatusItem>게시일 : {new Date(boardData.uploadDate).toISOString().split("T")[0]}</BoardStatusItem>
             <BoardStatusItem>마감일 : {new Date(boardData.deadlineDate).toISOString().split("T")[0]}</BoardStatusItem>
         </BoardStatus>
