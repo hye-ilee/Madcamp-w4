@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
   res.status(200).send('OK');
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 app.post('/api/register', async (req, res) => {
     const { email, password, name, studentid, major, resume, interests } = req.body;
 
