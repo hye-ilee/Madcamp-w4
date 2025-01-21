@@ -72,11 +72,11 @@ const CardNotice: React.FC<CardNoticeProps> = ({
         <KeywordContainer>
           <EmailContainer>
             <BottomTitle>게시일</BottomTitle>
-            <BottomText>{new Date(uploadDate).toISOString().split("T")[0]}</BottomText>
+            <BottomText>{new Date(uploadDate).toLocaleString().split("T")[0]}</BottomText>
           </EmailContainer>
           <EmailContainer>
             <BottomTitle>마감일</BottomTitle>
-            <BottomText>{new Date(deadlineDate).toISOString().split("T")[0]}</BottomText>
+            <BottomText>{new Date(deadlineDate).toLocaleString().split("T")[0]}</BottomText>
           </EmailContainer>
         </KeywordContainer>
 
