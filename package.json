@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "nodemon backend/index.js",
     "start": "node backend/index.js",
-    "build": "yarn --cwd frontend build"
+    "build": "yarn install && yarn --cwd frontend build"
   },
   "dependencies": {
     "dotenv": "^16.4.7"
