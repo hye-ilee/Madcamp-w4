@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setStudentData } from "../redux/slices/userSlice";
+import { setUserData } from "../redux/slices/userSlice";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -36,7 +36,7 @@ const Login: React.FC = () => {
         try {
           const response = await axios.post(`${apiUrl}/api/login`, userInput);
           console.log("Student registered successfully:", response.data);
-          dispatch(setStudentData(response.data.user));
+          dispatch(setUserData(response.data.user));
           alert(`${response.data.user.name}님 로그인되었습니다.`);
           navigate("/");
         } catch (error: any) {

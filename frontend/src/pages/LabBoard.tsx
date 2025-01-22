@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import StatusIcon from "../components/StatusIcon";
 import RecruitIcon from "../components/RecruitIcon";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -21,6 +23,7 @@ const LabBoard: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [newComment, setNewComment] = useState<string>("");
 
+  const {isLoggedIn, userData} = useSelector((state: RootState) => state.user);
   const ITEMS_PER_PAGE = 10;
 
   useEffect(() => {
@@ -52,21 +55,26 @@ const LabBoard: React.FC = () => {
   };
 
   const handleCommentSubmit = async () => {
+    if (!userData) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
     if (!newComment.trim()) return;
+  
     try {
       const response = await axios.post(
         `http://localhost:8080/api/notices/${LabName}/${Index}/comments`,
         {
-          userId: "USER_ID", // 실제 유저 ID를 넣으세요.
-          name: "User Name", // 실제 유저 이름을 넣으세요.
+          email: userData.email, // 실제 유저 ID를 넣으세요.
+          name: userData.name, // 실제 유저 이름을 넣으세요.
           content: newComment,
-          isReply: false,
+          parentCommentId: null,
         }
       );
       setComments([...comments, response.data]);
       setNewComment("");
     } catch (err) {
-      console.error("Failed to submit comment.");
+      console.error("Failed to submit comment.", err);
     }
   };
 
