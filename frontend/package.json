@@ -55,5 +55,6 @@
   },
   "devServer": {
     "allowedHosts": "all"
-  }
+  },
+  "homepage": "."
 }
