@@ -23,7 +23,7 @@ const LabBoard: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [newComment, setNewComment] = useState<string>("");
 
-  const {isLoggedIn, userData} = useSelector((state: RootState) => state.user);
+  const {userData} = useSelector((state: RootState) => state.user);
   const ITEMS_PER_PAGE = 10;
 
   useEffect(() => {
