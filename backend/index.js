@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const { ObjectId } = require('mongoose').Types;
 
 const User = require('./models/user');
 const Lab = require('./models/lab');
@@ -136,9 +137,11 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
   try {
     const notice = await Notice.findOne({ name: LabName, index: Number(Index)})
       .populate({
-        path: "comments.replies",
+        path: "comments",
         populate: {path: "replies"},
       });
+
+    console.log('replies:', notice.comments[0].replies);
 
     if (!notice) {
       return res.status(404).json({ message: "Notice not found." });
@@ -150,24 +153,7 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch notice." });
   }
 });
-
-//특정 글 삭제 - by연구실
-app.delete('/api/notices/:LabName/:Index', async (req, res) => {
-    const { LabName, Index } = req.params;
-
-    try {
-        const notice = await Notice.findOne({ name: LabName, index: Index });
-        if (!notice) {
-            return res.status(404).json({ message: 'Notice not found.' });
-        }
-        await notice.remove();
-        return res.status(200).json({ message: 'Notice deleted successfully.' });
-    } catch (err) {
-        console.error(err);
-        return res.status(500).json({ message: 'Failed to delete notice.' });
-    }
-});
-  
+ 
 // 댓글 or 대댓글 추가 API
 app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
     const { LabName, Index } = req.params;
@@ -260,27 +246,34 @@ app.put("/api/notices/:LabName/:Index/comments/:CommentId", async (req, res) => 
 });
 
 // 댓글 or 대댓글 삭제 API
-app.delete("/api/notices/:LabName/:Index/comments/:CommentId", async (req, res) => {
+app.delete("/api/notices/:LabName/:Index/:CommentId", async (req, res) => {
     const { LabName, Index, CommentId } = req.params;
   
     try {
+      console.log('params:',LabName, Index, CommentId);
       const notice = await Notice.findOne({ name: LabName, index: Index });
       if (!notice) {
         return res.status(404).json({ message: "Notice not found." });
       }
       const comment = notice.comments.id(CommentId);
+      console.log(comment);
+      const reply = await mongoose.connection.db.collection('comments').findOne({_id: new ObjectId(CommentId)});
       if (!comment) {
-        return res.status(404).json({ message: "Comment not found." });
+        console.log('reply:', reply);
+        // return res.status(404).json({ message: "Comment not found." });
       }
-      if (comment.isReply) {
-        const parentComment = notice.comments.id(comment.parentCommentId);
+      const parentComment = await mongoose.connection.db.collection('comments').findOne({_id:reply.parentCommentId});
+      if (reply.isReply) {
+        console.log('parentComment id:', reply.parentCommentId);
+        console.log('parentComment:', parentComment);
         if (parentComment) {
-          parentComment.replies = parentComment.replies.filter(reply => reply._id.toString() !== commentId);
+          parentComment.replies = parentComment.replies.filter(replyId => replyId.toString() !== CommentId);
         }
       } else {
         comment.remove();
       }
       await notice.save();
+      console.log('deleted: ',parentComment.replies);
       res.status(200).json({ message: "Comment deleted successfully." });
     } catch (err) {
       console.error(err);
@@ -288,7 +281,7 @@ app.delete("/api/notices/:LabName/:Index/comments/:CommentId", async (req, res) 
     }
 });
 
-//deadlineDate 정렬위해 모든랩 모든공지 다 가져오기
+//deadlineDate 정렬 모든랩 모든공지 다 가져오기
 app.get('/api/notices', async (req, res) => {
   try {
       const notices = await Notice.find().sort({ deadlineDate: 1 }); // 1 for ascending order
