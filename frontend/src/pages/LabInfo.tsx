@@ -9,6 +9,7 @@ import Pagination from "../components/Pagination";
 import Card from "../components/Card";
 
 const ITEMS_PER_PAGE = 10;
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const LabInfo: React.FC = () => {
   const { LabName } = useParams<{ LabName: string }>();
@@ -24,8 +25,8 @@ const LabInfo: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const noticesResponse = await axios.get(`http://localhost:8080/api/notices/${LabName}`);
-        const labResponse = await axios.get(`http://localhost:8080/api/labs/${LabName}`);
+        const noticesResponse = await axios.get(`${apiUrl}/api/notices/${LabName}`);
+        const labResponse = await axios.get(`${apiUrl}/api/labs/${LabName}`);
         setRecruitData(noticesResponse.data || []);
         setLabInfo(labResponse.data || null);
       } catch (err) {
