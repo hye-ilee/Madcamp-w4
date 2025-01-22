@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
-import { clearData } from "../redux/slices/userSlice";
+import { clearUserData } from "../redux/slices/userSlice";
 import {
     HeaderContainer,
     LogoAndNav,
@@ -22,11 +22,11 @@ import {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { accountType, data } = useSelector((state: RootState) => state.user);
-    const userName = String(data?.name);
+    const { isLoggedIn, userData } = useSelector((state: RootState) => state.user);
+    const userName = String(userData?.name);
 
     const handleLogout = () => {
-        dispatch(clearData());
+        dispatch(clearUserData());
         navigate("/");
     }
 
@@ -50,7 +50,7 @@ import {
             </NavItem>
           </Nav>
         </LogoAndNav>
-        {accountType != null && data ? (
+        { isLoggedIn && userData ? (
             <UserSection>
                 <UserName onClick={() => navigate("/mypage")}>{userName} 님</UserName>
                 <AuthButton onClick={handleLogout}>Log Out</AuthButton>

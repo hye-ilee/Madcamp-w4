@@ -6,21 +6,21 @@ import Footer from '../components/Footer';
 import styled from 'styled-components';
 
 const Mypage: React.FC = () => {
-  const { accountType, data } = useSelector((state: RootState) => state.user);
-  if (accountType === null || accountType === 'lab') {
+  const { isLoggedIn, userData } = useSelector((state: RootState) => state.user);
+  if (!isLoggedIn) {
     return <div>Loading...</div>;
   }
 
   let user;
-  if (accountType === 'student' && data) {
-    if ('studentid' in data) {
+  if (userData) {
+    if ('studentid' in userData) {
       user = {
-          email: String(data.email),
-          name: String(data.name),
-          studentid: String(data.studentid),
-          major: String(data.major),
-          resume: String(data.resume),
-          interests: (data.interests as unknown as string[]).map((interest: string) => String(interest)),
+          email: String(userData.email),
+          name: String(userData.name),
+          studentid: String(userData.studentid),
+          major: String(userData.major),
+          resume: String(userData.resume),
+          interests: (userData.interests as unknown as string[]).map((interest: string) => String(interest)),
       };
     }
   }

@@ -171,7 +171,18 @@ app.delete('/api/notices/:LabName/:Index', async (req, res) => {
 // 댓글 or 대댓글 추가 API
 app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
     const { LabName, Index } = req.params;
-    const { userId, name, content, parentCommentId } = req.body;
+    const { email, name, content, parentCommentId } = req.body;
+
+    if (!email || !name) {
+      return res.status(400).json({ message: 'Missing user info.' });
+    }
+    if (!content) {
+      return res.status(400).json({ message: 'Missing content.' });
+    }
+    const user = await User.findOne({email: email});
+    if (!user) {
+      return res.status(404).json({ message: 'Unregistered user email' });
+    }
   
     try {
       const notice = await Notice.findOne({ name: LabName, index: Index });
@@ -180,7 +191,7 @@ app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
       }
   
       const newComment = {
-        userId,
+        userId: user._id,
         name,
         content,
         timestamp: new Date(),
@@ -190,11 +201,10 @@ app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
       };
 
       const now = new Date();
-      if (isNaN(now)) {
-        console.error('Invalid Date object created:', now);
-        return res.status(500).json({ message: "Invalid server date." });
-      }
-
+      // if (isNaN(now)) {
+      //   console.error('Invalid Date object created:', now);
+      //   return res.status(500).json({ message: "Invalid server date." });
+      // }
   
       if (parentCommentId) {
         const parentComment = notice.comments.id(parentCommentId);
@@ -207,7 +217,8 @@ app.post("/api/notices/:LabName/:Index/comments", async (req, res) => {
       }
   
       await notice.save();
-      res.status(201).json({ message: "Comment added successfully." });
+      const justCreated = notice.comments[notice.comments.length - 1];
+      res.status(201).json(justCreated);
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: "Failed to add comment." });
@@ -281,8 +292,27 @@ app.delete("/api/notices/:LabName/:Index/comments/:CommentId", async (req, res) 
 app.get('/api/notices', async (req, res) => {
   try {
       const notices = await Notice.find().sort({ deadlineDate: 1 }); // 1 for ascending order
-      // const notices = await mongoose.connection.db.collection('notices').find({ status: { $in: ['모집중', '마감임박'] } })
-      return res.status(200).json(notices);
+      const now = new Date();
+      const statusNotices = notices.map(notice => {
+          const deadline = notice.deadlineDate;
+          const hrsLeft = (deadline - now) / 1000 / 60 / 60;
+          let status;
+
+          if (hrsLeft > 24) {
+            status = '모집중';
+          } else if (hrsLeft <= 24 && hrsLeft > 0) {
+            status = '마감임박';
+          } else {
+            const daysPassed = (now - deadline) / 1000 / 60 / 60 / 24;
+            if(daysPassed < 7){
+              status = '모집완료';
+            } else {
+              status = '지원마감';
+            }
+          }
+          return { ...notice.toObject(), status };
+      });
+      return res.status(200).json(statusNotices);
   } catch (err) {
       console.error('Error fetching recruiting notices:', err.message);
       return res.status(500).json({ message: 'Error fetching recruiting notices' });

@@ -1,56 +1,48 @@
 // src/redux/slices/userSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface StudentData {
-    userid: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    name: { type: String, required: true },
-    studentid: { type: String, required: true },
-    major: { type: String, required: true },
-    resume: { type: String, required: true },
-    interests: { type: [String], required: true }
-} 
-
-interface LabData {
-    userid: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    major: { type: String, enum: ['CS', 'ID'], required: true },
-    name: { type: String, required: true }  
+export interface UserData {
+  _id?: string;
+  email: string;
+  password: string;
+  name: string;
+  studentid: string;
+  major: string;
+  resume: string;
+  interests: string[];
 }
 
-interface UserState {
-  accountType: "student" | "lab" | null;
-  data: StudentData | LabData | undefined;
+/**
+ * Redux로 관리할 slice state 형식.
+ * 로그인 여부 + 사용자 정보
+ */
+export interface UserState {
+  isLoggedIn: boolean;
+  userData: UserData | null;
 }
 
 const initialState: UserState = {
-  accountType: null,
-  data: undefined,
+  isLoggedIn: false,
+  userData: null,
 };
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setStudentData: (state, action: PayloadAction<StudentData>) => {
-        state.accountType = "student";
-        state.data = action.payload;
+    // 로그인 성공 시, 사용자 정보를 저장
+    setUserData: (state, action: PayloadAction<UserData>) => {
+      state.isLoggedIn = true;
+      state.userData = action.payload;
     },
-    setLabData: (state, action: PayloadAction<LabData>) => {
-        state.accountType = "lab";
-        state.data = action.payload;
-    },
-    clearData: (state) => {
-        state.accountType = null;
-        state.data = undefined;
+    // 로그아웃 처리
+    clearUserData: (state) => {
+      state.isLoggedIn = false;
+      state.userData = null;
     },
   },
 });
 
-export const { setStudentData, setLabData, clearData } = userSlice.actions;
+export const { setUserData, clearUserData } = userSlice.actions;
 
 export default userSlice.reducer;
-
-  
