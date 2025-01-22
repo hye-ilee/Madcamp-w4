@@ -49,4 +49,5 @@ const Text = styled.div`
   font-size: ${({ theme }) => theme.typography.T5.fontSize};
   font-weight: ${({ theme }) => theme.typography.T5.fontWeight};
   text-align: center;
+  word-break: keep-all;
 `;

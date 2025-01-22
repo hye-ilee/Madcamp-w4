@@ -8,26 +8,22 @@ import axios from "axios";
 const labTextSrc = `/assets/lab_text.png`;
 
 const Home: React.FC = () => {
-  const [boardData, setBoardData] = useState<any | null>(null);
+  const [notices, setNotices] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  const LabName = "Next interface Lab";
-  const Index = 16;
-  const currentData = boardData ? Array(16).fill(boardData) : [];
 
   useEffect(() => {
     const fetchBoardData = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/notices/${LabName}/${Index}`
+          `http://localhost:8080/api/notices`
         );
         if (!response.data) {
           setError("No notice found.");
           return;
         }
-        setBoardData(response.data);
+        setNotices(response.data);
       } catch (err) {
         setError("Failed to fetch board data.");
       } finally {
@@ -36,7 +32,10 @@ const Home: React.FC = () => {
     };
   
     fetchBoardData();
-  }, [LabName, Index]);
+  }, []);
+
+  const imminentNotices = notices.filter((item: any) => item.status === "마감임박");
+  const recruitingNotices = notices.filter((item: any) => item.status === "모집중");
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -49,8 +48,8 @@ const Home: React.FC = () => {
           <GridWrapper>
             <SubTitle color="#FA5858">모집 마감 임박!</SubTitle>
             <CardGrid>
-              {currentData.length > 0 ? (
-                currentData.map((data, index) => <CardNotice key={index} {...data}/>)
+              {imminentNotices.length > 0 ? (
+                imminentNotices.map((data: any) => <CardNotice key={data._id} {...data}/>)
               ) : (
                 <div>No data found.</div>
               )}
@@ -59,8 +58,8 @@ const Home: React.FC = () => {
           <GridWrapper>
             <SubTitle color="#107F4F">모집 중인 Lab</SubTitle>
             <CardGrid>
-              {currentData.length > 0 ? (
-                currentData.map((data, index) => <CardNotice key={index} {...data}/>)
+              {recruitingNotices.length > 0 ? (
+                recruitingNotices.map((data: any) => <CardNotice key={data._id} {...data}/>)
               ) : (
                 <div>No data found.</div>
               )}
