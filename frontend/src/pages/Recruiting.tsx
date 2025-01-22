@@ -6,7 +6,6 @@ import CardNotice from "../components/CardNotice";
 import axios from "axios";
 
 const labTextSrc = `/assets/lab_text.png`;
-const apiUrl = process.env.REACT_APP_API_URL;
 
 const Home: React.FC = () => {
   const [notices, setNotices] = useState<any[]>([]);
@@ -18,7 +17,7 @@ const Home: React.FC = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${apiUrl}/api/notices/${LabName}/${Index}`
+          `http://localhost:8080/api/notices`
         );
         if (!response.data) {
           setError("No notice found.");
