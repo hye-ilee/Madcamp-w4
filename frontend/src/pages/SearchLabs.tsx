@@ -9,6 +9,7 @@ import axios from "axios";
 
 const ITEMS_PER_PAGE = 12;
 const labTextSrc = `/assets/lab_text.png`;
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const SearchLabs: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -27,7 +28,7 @@ const SearchLabs: React.FC = () => {
       setError(null);
       try {
         console.log("Fetching labs data...");
-        const response = await axios.get("http://localhost:8080/api/labs");
+        const response = await axios.get(`${apiUrl}/api/labs`);
         console.log("Labs data fetched:", response.data);
         setLabsData(response.data);
         setFilteredData(response.data);

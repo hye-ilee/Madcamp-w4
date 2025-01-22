@@ -1,11 +1,9 @@
-[[redirects]]
-  from = "/proxy/*"
-  to = "https://Jjolab-env4.eba-qqth2vcp.ap-northeast-2.elasticbeanstalk.com/:splat"
-  status = 200
-  force = true
+[build]
+  base = "frontend"
+  publish = "frontend/build"
+  command = "yarn build"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false

@@ -7,6 +7,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setStudentData } from "../redux/slices/userSlice";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Login: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -32,7 +34,7 @@ const Login: React.FC = () => {
         }
     
         try {
-          const response = await axios.post("http://localhost:8080/api/login", userInput);
+          const response = await axios.post(`${apiUrl}/api/login`, userInput);
           console.log("Student registered successfully:", response.data);
           dispatch(setStudentData(response.data.user));
           alert(`${response.data.user.name}님 로그인되었습니다.`);

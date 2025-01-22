@@ -15,6 +15,8 @@ const interests_items =  [
   "시스템", "환경", "우주", "바이오", "핵", "초전도", "에너지", "책", "주식"
 ];
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Signup: React.FC = () => {
   const navigate = useNavigate();
 
@@ -55,7 +57,7 @@ const Signup: React.FC = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/api/register", formData);
+      const response = await axios.post(`${apiUrl}/api/register`, formData);
       console.log("Student registered successfully:", response.data);
       alert("회원가입이 완료되었습니다. 다시 로그인해주세요.");
       navigate("/");
