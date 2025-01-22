@@ -11,6 +11,8 @@ import RecruitIcon from "../components/RecruitIcon";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const LabBoard: React.FC = () => {
   const { LabName, Index } = useParams<{ LabName: string; Index: string }>();
 
@@ -29,7 +31,7 @@ const LabBoard: React.FC = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/notices/${LabName}/${Index}`
+          `${apiUrl}/api/notices/${LabName}/${Index}`
         );
         if (!response.data) {
           setError("No notice found.");
