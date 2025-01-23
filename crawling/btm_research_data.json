@@ -1,0 +1,242 @@
+[
+    {
+        "name": "ITiP (IT Industry Pathfinder)",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_01.png",
+        "description": "We strive to analyze the transformative impact of new information technologies and study strategies for firms to thrive in volatile business environments",
+        "LabPI": "Youngsun Kwon",
+        "email": "yokwon@kaist.ac.kr",
+        "LabKeywords": [
+            "#AI",
+            "#Technology",
+            "#Telecommunications"
+        ],
+        "LabLink": "http://itip.kaist.ac.kr/"
+    },
+    {
+        "name": "김륜희 교수님 연구실",
+        "major": "BTM",
+        "thumbnail": "No Image",
+        "description": "수준 높은 재무 연구를 추구합니다",
+        "LabPI": "Ryoonhee Kim",
+        "email": "ryoonhee@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://btm.kaist.ac.kr/page/ko/selectPage.do?menuSeq=3254&pageSeq=3370#"
+    },
+    {
+        "name": "iSPI (KAIST Innovation Strategy and Policy Institute)",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_03.png",
+        "description": "Our vision is to become one of leading research organizations in innovation and entrepreneurship areas",
+        "LabPI": "Wonjoon Kim",
+        "email": "wonjoon.kim@kaist.edu",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://cifs.kaist.ac.kr/"
+    },
+    {
+        "name": "Prof. Jihee Kim’s Economics Research Group",
+        "major": "BTM",
+        "thumbnail": "No Image",
+        "description": "My research group studies how economic outcomes are distributed across individuals and regions. We approach our research questions from a new and unique perspective, employing a diverse set of methodologies such as theoretical economic modeling, empirical economic analysis, machine learning, lab and survey experiments.",
+        "LabPI": "Jihee Kim",
+        "email": "jiheekim@kaist.ac.kr",
+        "LabKeywords": [
+            "#Economic",
+            "Growth",
+            "#Inequality",
+            "#Big",
+            "Data",
+            "#Machine",
+            "Learning",
+            "#Experimental",
+            "Economics",
+            "#Economic",
+            "Policy"
+        ],
+        "LabLink": "http://www.jiheekim.net/"
+    },
+    {
+        "name": "FAER (Financial Accounting and ESG Reporting)",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_05.png",
+        "description": "Our FAER research group in KAIST study the role of financial accounting in numerous business activities.",
+        "LabPI": "Kevin Kim",
+        "email": "kevin.kim7@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://faer.quv.kr/"
+    },
+    {
+        "name": "Q-Marketing Lab",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_06.png",
+        "description": "-",
+        "LabPI": "Hye-jin Kim",
+        "email": "hyejinkim@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://bit.ly/Q_Marketing_BTM"
+    },
+    {
+        "name": "CEPS KAIST",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_07.png",
+        "description": "카이스트 기후 에너지 정책 전략 연구실",
+        "LabPI": "Jiyong Eom",
+        "email": "eomjiyong@kaist.ac.kr",
+        "LabKeywords": [
+            "#Climate",
+            "#Energy",
+            "#Policy"
+        ],
+        "LabLink": "https://kaistceps.quv.kr/"
+    },
+    {
+        "name": "NEXYS Lab.",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_08.png",
+        "description": "NEXYS Lab focuses on network and complexity economics, providing advanced economic feasibility analyses for diverse business cases and government policies.",
+        "LabPI": "Duk Hee Lee",
+        "email": "dhlnexys@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://nexys.kaist.ac.kr/"
+    },
+    {
+        "name": "Human Innovation Lab",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_09.png",
+        "description": "수평적인 분위기와 존중이 있는 연구실이며, 조직행동의 최신 트렌드에 발맞춘 연구 수행으로 탁월한 성과를 창출합니다.",
+        "LabPI": "Sujin Lee",
+        "email": "sujinlee@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://humaninnovation.kaist.ac.kr/"
+    },
+    {
+        "name": "Bisquare Lab",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_10.png",
+        "description": "We are MIS lab with empirical study, field experiment.",
+        "LabPI": "Chul Ho Lee",
+        "email": "irontigerlee@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://btm.kaist.ac.kr/page/ko/selectPage.do?menuSeq=3254&pageSeq=3370#"
+    },
+    {
+        "name": "METANOMICS LAB",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_11.png",
+        "description": "We have various backgrounds and support both theoretical and data-driven research.",
+        "LabPI": "Seungwon (Eugene) Jeong",
+        "email": "seungwon.jeong@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://metanomics.kaist.ac.kr/"
+    },
+    {
+        "name": "Technology Innovation (Tinno)",
+        "major": "BTM",
+        "thumbnail": "No Image",
+        "description": "We strive to understand latecomer technology catch-up process and upgrading/transition strategies via policy and firm’s innovation analysis.",
+        "LabPI": "Jae-Yong Choung",
+        "email": "jychoung@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://www.tinno.kaist.ac.kr/"
+    },
+    {
+        "name": "정현주교수님 연구실",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_12.png",
+        "description": "We conduct research on strategic management for technology, innovation, and entrepreneurship.",
+        "LabPI": "Hyun Ju Jung",
+        "email": "hyunju.jung@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://sites.google.com/view/hyun-ju-jung"
+    },
+    {
+        "name": "ARACHNE.LAB",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_13.png",
+        "description": "Arachne lab aims to explore interwoven web of ICT systems, in order to draft effective directions for digital as well as digital social innovations.",
+        "LabPI": "Hangjung Zo",
+        "email": "joezo@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://www.arachnelab.com/"
+    },
+    {
+        "name": "LAB 504",
+        "major": "BTM",
+        "thumbnail": "No Image",
+        "description": "Research of asset pricing in the equity and bond markets.",
+        "LabPI": "Choi, Hoyong",
+        "email": "hoyong.choi@kaist.ac.kr",
+        "LabKeywords": [
+            "#Investment",
+            "#Asset",
+            "Pricing"
+        ],
+        "LabLink": "https://btm.kaist.ac.kr/page/ko/selectPage.do?menuSeq=3254&pageSeq=3370#"
+    },
+    {
+        "name": "SYNOSIA",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_15.png",
+        "description": "SYNOSIA 연구실에서는 기업재무에 속한 다양한 주제의 연구를 수행합니다.",
+        "LabPI": "SeungHun Han",
+        "email": "synosia@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://synosia.kaist.ac.kr/"
+    },
+    {
+        "name": "Consumer Behavior and Decision Research (CBDR) Lab",
+        "major": "BTM",
+        "thumbnail": "https://btm.kaist.ac.kr/resources/wis-layout/images/sub/04/03/img_lab_16.png",
+        "description": "World-class research, abundant research funding and data, and collaboration with big names! We Are One Team!",
+        "LabPI": "Young Eun Huh",
+        "email": "younghuh@kaist.ac.kr",
+        "LabKeywords": [
+            "No Data"
+        ],
+        "LabLink": "https://sites.google.com/site/youngeunhuh/home"
+    },
+    {
+        "name": "Data & AI Systems in Organizations Lab",
+        "major": "BTM",
+        "thumbnail": "No Image",
+        "description": "Exploring the creation of smart organizations using AI, studying how experts use data in daily tasks, and developing interactive databases for niche fields like synthetic biology.",
+        "LabPI": "Thomas Steinberger",
+        "email": "tomsteinberger@kaist.ac.kr",
+        "LabKeywords": [
+            "#AI",
+            "#Data",
+            "practices",
+            "#Organization",
+            "design",
+            "#Human-computer",
+            "interaction",
+            "#Strategic",
+            "management"
+        ],
+        "LabLink": "https://btm.kaist.ac.kr/page/ko/selectPage.do?menuSeq=3254&pageSeq=3370#"
+    }
+]

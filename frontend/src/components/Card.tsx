@@ -37,9 +37,22 @@ interface CardProps {
   recruitInfo: {
     research: number;
     interns: number;
-    graduates: string;
+    graduates: number;
   };
 }
+
+// 랜덤 값 생성 함수
+const getRandomNumber = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+const getRandomDate = () => {
+  const start = new Date();
+  const end = new Date(start.getFullYear(), start.getMonth() + 1, 0); // End of next month
+  const randomDate = new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
+  return randomDate.toLocaleDateString(); // Format: YYYY-MM-DD
+};
 
 const Card: React.FC<CardProps> = ({
   name,
@@ -49,9 +62,20 @@ const Card: React.FC<CardProps> = ({
   description,
   LabPI,
   LabKeywords = [],
-  recruitInfo = { research: 0, interns: 0, graduates: "N/A" },
 }) => {
   const navigate = useNavigate();
+
+  const recruitInfo = {
+    research: getRandomNumber(1, 4),
+    interns: getRandomNumber(1, 4),
+    graduates: 0,
+  };
+
+  const recruitPeriods = {
+    research: `~${getRandomDate()}`,
+    interns: `~${getRandomDate()}`,
+    graduates: `~${getRandomDate()}`,
+  };
 
   const handleCardClick = () => {
     navigate(`/search/labs/${name}`);
@@ -106,21 +130,21 @@ const Card: React.FC<CardProps> = ({
             <RecruitIcon recruit="개별연구" />
             <RecruitText>{recruitInfo.research}명</RecruitText>
           </RecruitLeft>
-          <RecruitText>상시 모집 중</RecruitText>
+          <RecruitText>{recruitPeriods.research}</RecruitText>
         </RecruitContainer>
         <RecruitContainer>
           <RecruitLeft>
             <RecruitIcon recruit="랩인턴" />
             <RecruitText>{recruitInfo.interns}명</RecruitText>
           </RecruitLeft>
-          <RecruitText>~2025.01.31.</RecruitText>
+          <RecruitText>{recruitPeriods.interns}</RecruitText>
         </RecruitContainer>
         <RecruitContainer>
           <RecruitLeft>
             <RecruitIcon recruit="졸업연구" />
-            <RecruitText>{recruitInfo.graduates}</RecruitText>
+            <RecruitText>{recruitInfo.graduates}명</RecruitText>
           </RecruitLeft>
-          <RecruitText></RecruitText>
+          <RecruitText>상시 모집 중</RecruitText>
         </RecruitContainer>
       </KeywordContainer>
       </CardContent>

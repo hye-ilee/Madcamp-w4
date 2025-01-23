@@ -81,7 +81,7 @@ export default Mypage;
 const GlobalWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${({ theme }) => theme.colors.orange[100]};
   gap: 64px;
 `;
