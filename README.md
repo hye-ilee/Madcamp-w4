@@ -41,7 +41,7 @@
 ### 4. **<랩 둘러보기> 페이지**
 - 학과 상관 없이 모든 연구실 정보를 볼 수 있는 페이지로, 학과 선택을 앞둔 새내기들도 활용 가능합니다.
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/26100c91-b090-46fd-b86c-af1f2f895aa0" width="300">
+    <img src="https://github.com/user-attachments/assets/26100c91-b090-46fd-b86c-af1f2f895aa0" width="500">
 </p>
 
 ---
