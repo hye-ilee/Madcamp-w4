@@ -6,6 +6,7 @@
 졸업 요건 때문에 어느 랩에서 어떤 연구를 해야할 지 막막했던 적 있으신가요?
 
 **쪼랩 Jjolab**은 그런 여러분을 위해 학과별 랩 정보를 보여주고, 학부생의 연구 신청을 돕는 웹 서비스 입니다.
+
 [쪼랩 바로가기](jjolab.shop)
 ---
 
@@ -26,7 +27,7 @@
 - 클릭하면 해당 학과의 연구실 정보를 볼 수 있습니다.
 - 연구실을 클릭하면 해당 연구실의 정보와 랩인턴 모집 공고, 개별연구 및 졸업연구 관련 안내 등을 볼 수 있습니다.
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/e1b08a22-26ff-458f-bd0e-45e74d84ceec" width="300">
+    <img src="https://github.com/user-attachments/assets/1e5d342b-50dc-4f5c-b1f3-ca37436db142" width="500">
 </p>
 
 ### 3. **<모집 중 랩> 페이지**
@@ -34,7 +35,7 @@
 - 현재 시각을 기준 모집 마감까지 24시간 이내로 남은 경우, 마감임박으로 분류됩니다.
 - 로그인 후 문의사항을 댓글로 달 수 있습니다.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1e5d342b-50dc-4f5c-b1f3-ca37436db142" width="300">
+  <img src="https://github.com/user-attachments/assets/76def052-5b63-43c0-beed-0daca5ed398f" width="500">
 </p>
 
 ### 4. **<랩 둘러보기> 페이지**
