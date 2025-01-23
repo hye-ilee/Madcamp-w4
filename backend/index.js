@@ -144,11 +144,11 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
       notice.comments = [];
     }
 
-    if (notice.comments && notice.comments.length > 0) {
+    if (notice.comments.length > 0) {
       await notice.populate({
         path: "comments",
         populate: { path: "replies" },
-      }).execPopulate();
+      });
     }
 
     res.status(200).json(notice);
