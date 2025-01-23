@@ -135,11 +135,7 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
   const { LabName, Index } = req.params;
   
   try {
-    const notice = await Notice.findOne({ name: LabName, index: Number(Index)})
-      .populate({
-        path: "comments",
-        populate: {path: "replies"},
-      });
+    const notice = await Notice.findOne({ name: LabName, index: Number(Index) });
 
     console.log('replies:', notice.comments[0].replies);
 
@@ -149,6 +145,13 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
 
     if (!notice.comments) {
       notice.comments = [];
+    }
+
+    if (notice.comments && notice.comments.length > 0) {
+      await notice.populate({
+        path: "comments",
+        populate: { path: "replies" },
+      }).execPopulate();
     }
 
     res.status(200).json(notice);
