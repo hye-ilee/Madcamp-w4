@@ -136,7 +136,7 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
   try {
     const notice = await Notice.findOne({ name: LabName, index: Number(Index)})
       .populate({
-        path: "comments.replies",
+        path: "comments",
         populate: {path: "replies"},
       });
 
