@@ -22,7 +22,7 @@ const noticeSchema = new mongoose.Schema({
   deadlineDate: { type: Date, required: true }, // 마감 날짜
   detail: { type: String, required: true }, // 상세 내용
   applyLink: { type: String, required: true }, // 지원 링크
-  comments: [commentSchema] // 댓글 필드 추가
+  comments: { type: [commentSchema], default: [] } // 댓글 필드 추가
 });
 
 const Notice = mongoose.model('Notice', noticeSchema);

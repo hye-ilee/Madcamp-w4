@@ -144,6 +144,10 @@ app.get("/api/notices/:LabName/:Index", async (req, res) => {
       return res.status(404).json({ message: "Notice not found." });
     }
 
+    if (!notice.comments) {
+      notice.comments = [];
+    }
+
     res.status(200).json(notice);
   } catch (err) {
     console.error("Error fetching notice:", err.message);
