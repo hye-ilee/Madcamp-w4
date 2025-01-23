@@ -6,6 +6,7 @@
 졸업 요건 때문에 어느 랩에서 어떤 연구를 해야할 지 막막했던 적 있으신가요?
 
 **쪼랩 Jjolab**은 그런 여러분을 위해 학과별 랩 정보를 보여주고, 학부생의 연구 신청을 돕는 웹 서비스 입니다.
+[쪼랩 바로가기](jjolab.shop)
 ---
 
 ## 서비스 구성 🔍
@@ -15,9 +16,9 @@
 - 상단 헤더에 3개의 탭과 우측에 회원가입, 로그인 버튼이 있습니다.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/2138d41d-7a40-4c95-aa1b-2494a0297beb" width="300">
-  <img src="https://github.com/user-attachments/assets/f3163656-d1eb-4b9e-880b-a7c0fc28bed7" width="300">
-  <img src="https://github.com/user-attachments/assets/7efb1815-7f52-426d-8202-a6a9f1643213" width="300">
+  <img src="https://github.com/user-attachments/assets/2138d41d-7a40-4c95-aa1b-2494a0297beb" width="200">
+  <img src="https://github.com/user-attachments/assets/f3163656-d1eb-4b9e-880b-a7c0fc28bed7" width="200">
+  <img src="https://github.com/user-attachments/assets/7efb1815-7f52-426d-8202-a6a9f1643213" width="200">
 </p>
 
 ### 2. **<학과별 랩> 페이지**
@@ -33,7 +34,7 @@
 - 현재 시각을 기준 모집 마감까지 24시간 이내로 남은 경우, 마감임박으로 분류됩니다.
 - 로그인 후 문의사항을 댓글로 달 수 있습니다.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/784f7f50-9487-48ad-9d68-afb1c39a84dc" width="300">
+  <img src="https://github.com/user-attachments/assets/1e5d342b-50dc-4f5c-b1f3-ca37436db142" width="300">
 </p>
 
 ### 4. **<랩 둘러보기> 페이지**
