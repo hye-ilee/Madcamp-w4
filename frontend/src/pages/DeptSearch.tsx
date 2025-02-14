@@ -59,7 +59,7 @@ const DeptSearch: React.FC = () => {
           {currentData.length > 0 ? (
             currentData.map((data, index) => <Card key={index} {...data} />)
           ) : (
-            <div>No data found.</div>
+            <div>아직 Data가 추가되지 않은 학과입니다. 현재 추가가 완료된 학과는 CS, ID, BTM입니다.</div>
           )}
         </CardGrid>
         <PaginationWrapper>

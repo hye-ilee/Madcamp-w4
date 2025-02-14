@@ -38,38 +38,38 @@ export const theme: DefaultTheme = {
         T1: {
             fontFamily: "Pretendard",
             fontWeight: 800, // ExtraBold
-            fontSize: "48px",
+            fontSize: "40px",
             lineHeight: "auto",
         },
         T2: {
             fontFamily: "Pretendard",
             fontWeight: 700, // Bold
-            fontSize: "32px",
+            fontSize: "24px",
             lineHeight: "auto",
         },
         T3: {
             fontFamily: "Pretendard",
             fontWeight: 600, // SemiBold
-            fontSize: "24px",
+            fontSize: "20px",
             lineHeight: "auto",
         },
         T4: {
             fontFamily: "Pretendard",
             fontWeight: 600, // SemiBold
-            fontSize: "20px",
+            fontSize: "18px",
             lineHeight: "auto",
         },
         T5: {
             fontFamily: "Pretendard",
-            fontWeight: 500, // Medium
+            fontWeight: 500, // Bold
             fontSize: "16px",
             lineHeight: "auto",
         },
         T6: {
             fontFamily: "Pretendard",
-            fontWeight: 400, // Regular
+            fontWeight: 500, // Medium
             fontSize: "14px",
-            lineHeight: "auto",
+            lineHeight: "20px",
         },
         T7: {
             fontFamily: "Pretendard",
@@ -77,7 +77,7 @@ export const theme: DefaultTheme = {
             fontSize: "12px",
             lineHeight: "auto",
         },
-    },    
+    },
 };
 
 export type ThemeType = typeof theme;

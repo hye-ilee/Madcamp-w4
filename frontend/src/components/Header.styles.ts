@@ -23,8 +23,8 @@ export const LogoAndNav = styled.div`
 
 // 로고
 export const Logo = styled.div`
-  width: 150px;
-  height: 60px;
+  width: 100px;
+  height: 40px;
   background-image: url('/assets/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -77,8 +77,8 @@ export const UserName = styled.div`
 // 인증 버튼
 export const AuthButton = styled.button`
     display: flex;
-    width: 128px;
-    height: 48px;
+    width: 104px;
+    height: 39px;
     padding: 0px 8px;
     justify-content: center;
     align-items: center;
@@ -86,7 +86,7 @@ export const AuthButton = styled.button`
     font-weight: ${({ theme }) => theme.typography.T3.fontWeight};
     color: ${({ theme }) => theme.colors.primary};
     border-radius: 24px;
-    border: 4px solid ${({ theme }) => theme.colors.primary};
+    border: 2px solid ${({ theme }) => theme.colors.primary};
     background-color: ${({ theme }) => theme.colors.white};
     cursor: pointer;
 

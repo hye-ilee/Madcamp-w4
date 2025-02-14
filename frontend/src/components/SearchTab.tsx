@@ -5,11 +5,7 @@ import { FaChevronDown, FaChevronUp, FaSearch } from "react-icons/fa";
 const departments = [
   { label: "CS", value: "CS" },
   { label: "ID", value: "ID" },
-  { label: "EE", value: "EE" },
-  { label: "CHEM", value: "CHEM" },
-  { label: "BIO", value: "BIO" },
-  { label: "MATH", value: "MATH" },
-  { label: "ME", value: "ME" },
+  { label: "BTM", value: "BTM" }
 ];
 
 const recruitmentTypes = ["개별 연구", "랩 인턴", "졸업 연구"];
