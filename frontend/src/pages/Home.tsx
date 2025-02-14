@@ -6,27 +6,25 @@ import Footer from "../components/Footer";
 const Home: React.FC = () => {
   return (
     <GlobalWrapper>
-      <Container>
-        <Header />
-        <Content>
-          <ChatBubble align="left" delay={0}>
-            어느 교수님께 개별 연구를 신청해야 할지 모르겠어 ㅠㅠ
-          </ChatBubble>
-          <ChatBubble align="right" delay={0.5}>
-            지금 어느 랩이 인턴 모집 중이지??
-          </ChatBubble>
-          <ChatBubble align="left" delay={1}>
-            이제는 진짜 졸업연구 해야 졸업할 수 있는데...
-          </ChatBubble>
-        </Content>
-        <MiddleSection>
-          <Title delay={1.5}>이런 쪼랩 학부생들을 위한 플랫폼!</Title>
-          <LogoWrapper delay={2}>
-            <Logo />
-          </LogoWrapper>
-        </MiddleSection>
-        <Footer />
-      </Container>
+      <Header />
+      <Content>
+        <ChatBubble align="left" delay={0}>
+          어느 교수님께 개별 연구를 신청해야 할지 모르겠어 ㅠㅠ
+        </ChatBubble>
+        <ChatBubble align="right" delay={0.5}>
+          지금 어느 랩이 인턴 모집 중이지??
+        </ChatBubble>
+        <ChatBubble align="left" delay={1}>
+          이제는 진짜 졸업연구 해야 졸업할 수 있는데...
+        </ChatBubble>
+      </Content>
+      <MiddleSection>
+        <Title delay={1.5}>이런 쪼랩 학부생들을 위한 플랫폼!</Title>
+        <LogoWrapper delay={2}>
+          <Logo />
+        </LogoWrapper>
+      </MiddleSection>
+      <Footer />
     </GlobalWrapper>
   );
 };
@@ -52,20 +50,15 @@ const GlobalWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.orange[100]};
 `;
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.primary};
-`;
-
 const Content = styled.div`
   display: flex;
+  width: 80%;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 40px 20px;
+  padding: 32px 10%;
+  margin: 0 auto;
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 const ChatBubble = styled.div<{ align: "left" | "right"; delay: number }>`
@@ -100,7 +93,7 @@ const MiddleSection = styled.div`
 
 const Title = styled.div<{ delay: number }>`
   color: ${({ theme }) => theme.colors.primary};
-  font-size: 80px;
+  font-size: 72px;
   font-weight: 900;
   text-align: center;
 

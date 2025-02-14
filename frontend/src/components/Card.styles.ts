@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-const c1 = "#BBBBBB";
-const c2 = "#EEEEEE";
-
 export const CardContainer = styled.div`
     display: flex;
     width: 320px;
@@ -11,12 +8,8 @@ export const CardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;
-    border: 6px solid transparent;
+    border: 4px solid ${({ theme }) => theme.colors.gray[200]};
     border-radius: 16px;
-    background-image: linear-gradient(#fff, #fff),
-        linear-gradient(-45deg, ${c1} 0%, ${c2} 10%, ${c1} 20%, ${c2} 30%, ${c1} 40%, ${c2} 50%, ${c1} 60%, ${c2} 70%, ${c1} 80%, ${c2} 90%, ${c1} 100%);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 `;
@@ -28,8 +21,7 @@ export const CardContent = styled.div`
     gap: 16px;
     width: 100%;
     height: 100%;
-    padding: 16px 16px 0 16px;
-    margin-bottom: 16px;
+    padding: 16px;
     border-radius: 16px;
     background-color: ${({ theme }) => theme.colors.white};
     overflow: hidden;

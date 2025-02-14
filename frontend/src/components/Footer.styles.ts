@@ -7,7 +7,7 @@ export const FooterContainer = styled.footer`
   align-items: center; /* 세로 중앙 정렬 */
   background-color: ${(props) => props.theme.colors.white};
   border-top: 2px solid ${(props) => props.theme.colors.gray[400]};
-  padding: 12px 24px;
+  padding: 8px 24px;
   box-sizing: border-box;
   margin-top: auto;
 `;

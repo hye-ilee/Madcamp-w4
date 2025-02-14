@@ -87,7 +87,7 @@ const GlobalWrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
-  height: calc(100vh - 120px); /* Header/Footer 높이 감안 */
+  height: calc(100vh - 104px); /* Header/Footer 높이 감안 */
   background-color: ${({ theme }) => theme.colors.primary};
   overflow: hidden;
 `;
